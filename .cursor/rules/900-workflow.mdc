@@ -1,0 +1,331 @@
+---
+alwaysApply: true
+---
+
+# Coding Standards & Workflow
+
+## Code Quality Tools
+
+### Linting & Formatting
+
+- **Linter:** Biome (latest stable)
+- **Formatter:** Biome formatter
+- **Type Checker:** TypeScript strict mode
+
+### Pre-Commit Checks
+
+```bash
+# Run before committing
+bun run lint        # Biome check
+bun run format      # Biome format
+bun run typecheck   # TypeScript compiler
+```
+
+### Configuration
+
+```json
+// biome.json
+{
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "organizeImports": { "enabled": true },
+  "linter": {
+    "enabled": true,
+    "rules": { "recommended": true }
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2
+  }
+}
+```
+
+## Git Workflow
+
+### Commit Messages
+
+Follow **Conventional Commits** format:
+
+```
+<type>(<scope>): <subject>
+```
+
+### Commit Types
+
+- `feat:` - New feature or section
+- `fix:` - Bug fix
+- `style:` - Styling changes (CSS, design tweaks)
+- `refactor:` - Code refactoring
+- `chore:` - Dependencies, config changes
+- `docs:` - Documentation updates
+
+### Examples
+
+```
+feat(hero): add animated code preview
+style(features): improve card hover states
+fix(waitlist): resolve form submission error
+refactor(components): extract CodeBlock component
+chore(deps): update TanStack Start to latest
+```
+
+### Branch Strategy
+
+For a landing page, keep it simple:
+
+- `main` - Production-ready code
+- `feature/*` - Feature branches (new sections, major changes)
+- `fix/*` - Bug fix branches
+
+## File Naming Conventions
+
+### Components
+
+- Use kebab-case for files: `feature-card.tsx`, `code-block.tsx`
+- Use PascalCase for exports: `export function FeatureCard() {}`
+
+### Routes
+
+- Follow TanStack Start conventions
+- `__root.tsx` for root layout
+- `index.tsx` for main page
+
+### Assets
+
+- Use descriptive names: `hero-code-preview.png`
+- Use kebab-case: `og-image.png`, `favicon.ico`
+
+## Component Guidelines
+
+### File Structure
+
+```typescript
+// Imports (external, then internal, then types)
+import { motion } from "framer-motion";
+import { IconShield } from "@tabler/icons-react";
+
+import { cn } from "~/lib/utils";
+
+import type { FeatureProps } from "./types";
+
+// Component
+export function Feature({ title, description, icon }: FeatureProps) {
+  return (
+    // JSX
+  );
+}
+
+// Keep component files focused - one main export per file
+```
+
+### Props Interface
+
+```typescript
+// Define props with TypeScript interfaces
+interface FeatureCardProps {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  className?: string;
+}
+
+// Use destructuring with defaults
+export function FeatureCard({
+  title,
+  description,
+  icon,
+  className,
+}: FeatureCardProps) {
+  // ...
+}
+```
+
+### Styling Patterns
+
+```typescript
+// Use cn() utility for conditional classes
+import { cn } from "~/lib/utils";
+
+function Button({ variant = "primary", className, ...props }) {
+  return (
+    <button
+      className={cn(
+        "px-6 py-3 rounded-lg font-medium transition-colors",
+        variant === "primary" && "bg-primary text-primary-foreground",
+        variant === "secondary" && "bg-card border border-border",
+        className
+      )}
+      {...props}
+    />
+  );
+}
+```
+
+## Testing
+
+### Manual Testing Checklist
+
+For a landing page, focus on:
+
+- [ ] All links work correctly
+- [ ] Form submission works (waitlist)
+- [ ] Responsive design (mobile, tablet, desktop)
+- [ ] Animations don't cause jank
+- [ ] Images load properly
+- [ ] Fonts load correctly
+- [ ] Page speed is acceptable
+- [ ] Accessibility (keyboard nav, screen reader)
+
+### Browser Testing
+
+Test on:
+
+- Chrome (primary)
+- Firefox
+- Safari
+- Edge
+- Mobile Safari (iOS)
+- Chrome Mobile (Android)
+
+## Performance Checklist
+
+### Before Deployment
+
+- [ ] Run Lighthouse audit (target: 90+ all categories)
+- [ ] Check bundle size
+- [ ] Verify image optimization
+- [ ] Test on slow 3G throttling
+- [ ] Check for layout shifts (CLS)
+
+### Optimization Techniques
+
+```typescript
+// Lazy load below-fold images
+<img loading="lazy" src="..." alt="..." />
+
+// Use appropriate image formats
+// Prefer WebP with fallbacks
+
+// Preload critical fonts
+<link rel="preload" href="/fonts/font.woff2" as="font" type="font/woff2" crossOrigin />
+```
+
+## Deployment
+
+### Environment Variables
+
+```bash
+# .env.example
+# Email service (optional)
+RESEND_API_KEY=
+RESEND_AUDIENCE_ID=
+
+# Analytics (optional)
+PLAUSIBLE_DOMAIN=
+```
+
+### Vercel Deployment
+
+```bash
+# Install Vercel CLI
+bun add -g vercel
+
+# Deploy preview
+vercel
+
+# Deploy production
+vercel --prod
+```
+
+### Pre-Deployment Checklist
+
+- [ ] All environment variables set
+- [ ] Build succeeds locally (`bun run build`)
+- [ ] No TypeScript errors
+- [ ] No console errors/warnings
+- [ ] Meta tags and OG image configured
+- [ ] Favicon in place
+- [ ] robots.txt and sitemap configured
+- [ ] Analytics configured (if applicable)
+
+## Documentation
+
+### Code Comments
+
+- Comment complex logic or non-obvious code
+- Use JSDoc for exported functions
+- Keep comments up-to-date
+
+```typescript
+/**
+ * Submits email to waitlist via server function.
+ * Integrates with Resend if configured, otherwise logs to console.
+ */
+export const joinWaitlist = createServerFn({ method: "POST" })
+  // ...
+```
+
+### README Requirements
+
+```markdown
+# QAuth Landing Page
+
+## Setup
+
+1. Clone repository
+2. Install dependencies: `bun install`
+3. Run development server: `bun run dev`
+4. Open http://localhost:3000
+
+## Environment Variables
+
+Copy `.env.example` to `.env.local` and configure.
+
+## Deployment
+
+Push to main branch for automatic Vercel deployment.
+```
+
+## Dependency Management
+
+### Before Adding Dependencies
+
+1. **Check if necessary** - Can it be done with existing tools?
+2. **Verify version** - Check npm for latest stable version
+3. **Check bundle size** - Use bundlephobia.com
+4. **Review maintenance** - Is the package actively maintained?
+5. **Check license** - Ensure compatible license
+
+### Updating Dependencies
+
+```bash
+# Check for updates
+bun outdated
+
+# Update specific package
+bun update <package-name>
+
+# Update all (careful)
+bun update
+```
+
+## Security
+
+### Best Practices
+
+- Never commit `.env` files
+- Validate all form inputs
+- Use HTTPS in production
+- Keep dependencies updated
+- Review security advisories
+
+### Form Security
+
+```typescript
+// Always validate server-side
+const schema = z.object({
+  email: z.string().email().max(255),
+});
+
+// Rate limit form submissions (implement at edge/API level)
+```

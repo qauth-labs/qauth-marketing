@@ -1,0 +1,30 @@
+{
+  "name": "qauth-marketing",
+  "private": true,
+  "type": "module",
+  "workspaces": ["apps/*", "libs/*"],
+  "scripts": {
+    "dev": "nx dev qauth-landing",
+    "build": "nx build qauth-landing",
+    "preview": "nx preview qauth-landing",
+    "test": "nx test qauth-landing",
+    "lint": "nx lint qauth-landing",
+    "format": "bunx ultracite fix",
+    "check": "bunx ultracite check"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.3.11",
+    "@nx/js": "^22.3.3",
+    "@nx/node": "^22.3.3",
+    "@nx/react": "^22.3.3",
+    "@nx/vite": "^22.3.3",
+    "nx": "^22.3.3",
+    "typescript": "^5.9.3",
+    "ultracite": "7.0.8",
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "framer-motion": "^12.33.0",
+    "zod": "^4.3.6"
+  }
+}

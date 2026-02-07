@@ -1,0 +1,233 @@
+---
+alwaysApply: false
+globs:
+  - "**/*.tsx"
+  - "**/*.ts"
+---
+
+# Content & Copy Guidelines
+
+## Voice & Tone
+
+### Brand Voice
+
+QAuth speaks with:
+
+- **Authority:** Confident, knowledgeable about security
+- **Clarity:** Technical but accessible
+- **Forward-thinking:** Innovative, ahead of the curve
+- **Developer-friendly:** Speaks the language of engineers
+
+### Tone Principles
+
+- Professional but not corporate
+- Technical but not intimidating
+- Confident but not arrogant
+- Concise and direct
+
+## Section Content
+
+### Hero Section
+
+**Headline:** "Post-Quantum Ready Authentication"
+
+**Subheadline (keep under 150 chars):**
+"The headless-first identity platform built for the next era of cryptography. Fully OAuth 2.1 compliant, developer-friendly, and secure by design."
+
+**CTAs:**
+- Primary: "Get Started"
+- Secondary: "View Docs"
+
+**Supporting links:**
+- "Open Source"
+- "Self Hosted"
+
+**Code Preview:**
+```bash
+# Install the QAuth SDK
+npm install @qauth/sdk
+
+# Initialize secure client
+```
+
+```typescript
+const qauth = new QAuthClient({
+  clientId: process.env.QAUTH_CLIENT_ID,
+  algorithm: "CRYSTALS-Kyber", // Quantum-safe
+  headless: true,
+});
+
+// Ready to authenticate
+await client.authenticate();
+```
+
+### Core Features
+
+1. **Post-Quantum Security**
+   - Title: "Post-Quantum Security"
+   - Description: "Future-proof cryptography implementing NIST-standardized algorithms like CRYSTALS-Kyber."
+
+2. **Headless-First**
+   - Title: "Headless-First"
+   - Description: "Complete API control. Build your own UI, we handle the complex security primitives."
+
+3. **Dev Experience**
+   - Title: "Dev Experience"
+   - Description: "Typed SDKs, comprehensive docs, and local testing with dev mode that just works."
+
+4. **OAuth 2.1 & OIDC**
+   - Title: "OAuth 2.1 & OIDC"
+   - Description: "Fully compliant with modern standards. Easy integration, enterprise-ready."
+
+### Development Status / Roadmap
+
+**Section Title:** "Development Status"
+
+**Target Release:** "Target Release: Q2 2026"
+
+**Milestones:**
+
+| Milestone | Description | Status |
+|-----------|-------------|--------|
+| Project Foundation | Repository setup, CI/CD pipeline, architecture design | Completed |
+| User Registration & Email Verification | Core user flows, database, email verification flow | Completed |
+| Login & JWT Tokens | Implementing secure token issuance, refresh rotation, and session management | In Progress |
+| OAuth 2.1 Flow | Authorization code flow with PKCE | Planned |
+| Developer Portal & Release | Dashboard, API keys management, and public release | Planned |
+
+### Simple Integration
+
+**Title:** "Simple Integration"
+
+**Description:** "Don't rewrite your entire stack. QAuth drops into your existing framework with minimal configuration. Whether it's Next.js, Go, or Python, we provide typed SDKs that respect your workflow."
+
+**Features:**
+- "Type-safe by default"
+- "Zero config middleware"
+- "Edge-ready latency"
+
+**Code Example:**
+```typescript
+import { QAuthMiddleware } from "@qauth/nextjs";
+
+// Protect your routes with quantum-safe auth
+export const config = {
+  matcher: ["/dashboard/:path*", "/api/protected/:path*"],
+};
+
+export default QAuthMiddleware({
+  tokenFresh: 24 * 60 * 60,
+  cookieShared: "strict-quantum",
+  refreshAt: 0.25,
+  customTest: (req) => {
+    return !req.headers["x-skip-auth"];
+  },
+});
+
+const route = createRoute({
+  requireAuth: true,
+  resources: ["documents", { status: 49 }],
+});
+```
+
+### Benefits Grid
+
+1. **Lightweight**
+   - Title: "Lightweight"
+   - Description: "Unlike bloated auth libraries, QAuth's SDK is a single dependency with < 5KB runtime payload."
+
+2. **Fully Customizable**
+   - Title: "Fully Customizable"
+   - Description: "No rigid flows or pre-built components. Build your login experience in React, Vue, or Vanilla."
+
+3. **Quantum Resistant**
+   - Title: "Quantum Resistant"
+   - Description: "All data is protected using lattice-based cryptography. We are built for a 50+ year horizon today."
+
+### Waitlist CTA
+
+**Title:** "Join the Revolution"
+
+**Description:** "We are currently in private alpha. Be the first to know when we launch the public beta and secure your spot."
+
+**Placeholder:** "Enter your email address"
+
+**Button:** "Join Waitlist"
+
+**Privacy note:** "No spam. Unsubscribe anytime."
+
+### Footer
+
+**Links:**
+- GitHub
+- Documentation
+- Twitter/X
+
+**Copyright:** "© 2026 QAuth Labs. All rights reserved. Built with quantum-grade encryption."
+
+**Version:** "Alpha 0.1"
+
+## Writing Guidelines
+
+### Headlines
+
+- Use active voice
+- Keep under 6 words when possible
+- Focus on benefits, not features
+- Use title case
+
+### Body Copy
+
+- Keep paragraphs short (2-3 sentences)
+- Lead with the benefit
+- Use second person ("you", "your")
+- Avoid jargon without explanation
+- Target reading level: Technical professionals
+
+### CTAs
+
+- Use action verbs: "Get", "Start", "Join", "View"
+- Create urgency where appropriate
+- Be specific: "Join Waitlist" vs "Submit"
+
+### Code Examples
+
+- Keep examples concise and realistic
+- Show the happy path
+- Use meaningful variable names
+- Add comments for clarity
+- Highlight key features
+
+## Terminology
+
+### Use
+
+- "Post-quantum" (hyphenated)
+- "Headless-first" (hyphenated)
+- "OAuth 2.1" (with version)
+- "SDK" (not "sdk")
+- "API" (not "api")
+
+### Avoid
+
+- "Revolutionary" (overused)
+- "Best-in-class" (vague)
+- "Cutting-edge" (cliché)
+- "Seamless" (overused in tech)
+- "Leverage" (use "use" instead)
+
+## SEO Considerations
+
+### Meta Title (50-60 chars)
+"QAuth - Post-Quantum Ready Authentication Platform"
+
+### Meta Description (150-160 chars)
+"The headless-first identity platform built for quantum-resistant security. OAuth 2.1 compliant, developer-friendly, open source."
+
+### Keywords (natural integration)
+- Post-quantum authentication
+- Quantum-resistant auth
+- Headless authentication
+- OAuth 2.1 provider
+- Developer authentication platform
+- CRYSTALS-Kyber authentication

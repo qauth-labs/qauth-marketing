@@ -1,0 +1,345 @@
+---
+alwaysApply: true
+---
+
+# Design System & Visual Guidelines
+
+## Brand Identity
+
+**QAuth** represents security, innovation, and developer-first design. The visual language should communicate:
+
+- **Trust:** Professional, enterprise-grade appearance
+- **Innovation:** Cutting-edge, forward-looking aesthetic
+- **Simplicity:** Clean, uncluttered, easy to scan
+- **Technical Competence:** Code-first, developer-friendly
+
+## Color Palette
+
+### Primary Colors
+
+| Token              | Value     | Usage                          |
+| ------------------ | --------- | ------------------------------ |
+| `--background`     | `#0D0D0D` | Page background                |
+| `--foreground`     | `#FAFAFA` | Primary text                   |
+| `--card`           | `#1A1A1A` | Card backgrounds, elevated UI  |
+| `--card-elevated`  | `#262626` | Nested cards, hover states     |
+| `--border`         | `#262626` | Borders, dividers              |
+| `--border-subtle`  | `#1F1F1F` | Subtle separators              |
+
+### Accent Colors
+
+| Token                    | Value     | Usage                      |
+| ------------------------ | --------- | -------------------------- |
+| `--primary`              | `#F97316` | CTAs, links, highlights    |
+| `--primary-hover`        | `#FB923C` | Hover state for primary    |
+| `--primary-foreground`   | `#0D0D0D` | Text on primary background |
+
+### Text Colors
+
+| Token                  | Value     | Usage                    |
+| ---------------------- | --------- | ------------------------ |
+| `--foreground`         | `#FAFAFA` | Headings, primary text   |
+| `--muted-foreground`   | `#A3A3A3` | Body text, descriptions  |
+| `--muted`              | `#737373` | Subtle text, captions    |
+
+### Status Colors
+
+| Token       | Value     | Usage                      |
+| ----------- | --------- | -------------------------- |
+| `--success` | `#22C55E` | Completed, positive states |
+| `--warning` | `#EAB308` | In progress, caution       |
+| `--info`    | `#3B82F6` | Informational              |
+| `--error`   | `#EF4444` | Errors, destructive        |
+
+## Typography
+
+### Font Stack
+
+```css
+--font-display: "Cabinet Grotesk", "Satoshi", system-ui, sans-serif;
+--font-body: "Geist", "Inter", system-ui, sans-serif;
+--font-mono: "JetBrains Mono", "Fira Code", monospace;
+```
+
+### Type Scale
+
+| Name       | Size     | Weight | Line Height | Usage                  |
+| ---------- | -------- | ------ | ----------- | ---------------------- |
+| `display`  | 4rem     | 700    | 1.1         | Hero headline          |
+| `h1`       | 3rem     | 700    | 1.2         | Section titles         |
+| `h2`       | 2rem     | 600    | 1.3         | Subsection titles      |
+| `h3`       | 1.25rem  | 600    | 1.4         | Card titles            |
+| `body`     | 1rem     | 400    | 1.6         | Body text              |
+| `body-lg`  | 1.125rem | 400    | 1.6         | Lead paragraphs        |
+| `small`    | 0.875rem | 400    | 1.5         | Captions, labels       |
+| `code`     | 0.875rem | 400    | 1.5         | Code blocks            |
+
+### Typography Classes
+
+```css
+.text-display {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+```
+
+## Spacing System
+
+Based on 4px grid:
+
+| Token | Value  | Usage                 |
+| ----- | ------ | --------------------- |
+| `xs`  | 4px    | Tight spacing         |
+| `sm`  | 8px    | Small gaps            |
+| `md`  | 16px   | Default spacing       |
+| `lg`  | 24px   | Section padding       |
+| `xl`  | 32px   | Large gaps            |
+| `2xl` | 48px   | Section margins       |
+| `3xl` | 64px   | Major section spacing |
+| `4xl` | 96px   | Hero spacing          |
+
+## Component Patterns
+
+### Buttons
+
+```typescript
+// Primary CTA
+<button className="px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary-hover transition-colors">
+  Get Started
+</button>
+
+// Secondary
+<button className="px-6 py-3 bg-transparent border border-border text-foreground font-medium rounded-lg hover:bg-card transition-colors">
+  View Docs
+</button>
+
+// Ghost
+<button className="px-4 py-2 text-muted-foreground hover:text-foreground transition-colors">
+  Learn More →
+</button>
+```
+
+### Cards
+
+```typescript
+// Feature Card
+<div className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors">
+  <div className="size-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+    <Icon className="size-5 text-primary" />
+  </div>
+  <h3 className="text-lg font-semibold mb-2">Feature Title</h3>
+  <p className="text-muted-foreground">Description text...</p>
+</div>
+
+// Code Card
+<div className="rounded-xl bg-[#0f0f0f] border border-border overflow-hidden">
+  <div className="flex items-center gap-2 px-4 py-3 border-b border-border">
+    <div className="flex gap-1.5">
+      <span className="size-3 rounded-full bg-red-500/80" />
+      <span className="size-3 rounded-full bg-yellow-500/80" />
+      <span className="size-3 rounded-full bg-green-500/80" />
+    </div>
+    <span className="text-sm text-muted ml-2">example.ts</span>
+  </div>
+  <pre className="p-4 overflow-x-auto">
+    <code>...</code>
+  </pre>
+</div>
+```
+
+### Status Badges
+
+```typescript
+// Completed
+<span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-success/10 text-success">
+  <CheckIcon className="size-3" />
+  Completed
+</span>
+
+// In Progress
+<span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">
+  <LoaderIcon className="size-3 animate-spin" />
+  In Progress
+</span>
+
+// Planned
+<span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-muted/10 text-muted-foreground">
+  <CircleIcon className="size-3" />
+  Planned
+</span>
+```
+
+### Input Fields
+
+```typescript
+<input
+  type="email"
+  placeholder="Enter your email address"
+  className="w-full px-4 py-3 bg-card border border-border rounded-lg text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+/>
+```
+
+## Layout Patterns
+
+### Container
+
+```css
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+```
+
+### Section
+
+```typescript
+<section className="py-24 md:py-32">
+  <div className="container">
+    {/* Section content */}
+  </div>
+</section>
+```
+
+### Grid Patterns
+
+```typescript
+// Feature grid (4 columns on desktop)
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+  {features.map(feature => <FeatureCard key={feature.title} {...feature} />)}
+</div>
+
+// Two-column layout
+<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+  <div>{/* Content */}</div>
+  <div>{/* Visual */}</div>
+</div>
+```
+
+## Animation Guidelines
+
+### Transitions
+
+- Default: `transition-colors duration-200`
+- Hover states: `transition-all duration-300`
+- Page transitions: `duration-500 ease-out`
+
+### Entrance Animations
+
+```typescript
+// Fade in from bottom
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }
+};
+
+// Stagger children
+const stagger = {
+  animate: {
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+  }
+};
+
+// Scale in
+const scaleIn = {
+  initial: { opacity: 0, scale: 0.95 },
+  animate: { opacity: 1, scale: 1 },
+  transition: { duration: 0.4 }
+};
+```
+
+### Micro-interactions
+
+- Button hover: Scale 1.02, slight brightness increase
+- Card hover: Border color shift to primary/50
+- Link hover: Underline animation, color shift
+- Icon hover: Subtle rotation or bounce
+
+## Visual Effects
+
+### Gradients
+
+```css
+/* Hero gradient overlay */
+.gradient-hero {
+  background: radial-gradient(
+    ellipse 80% 50% at 50% -20%,
+    rgba(249, 115, 22, 0.15),
+    transparent
+  );
+}
+
+/* Card glow effect */
+.glow-primary {
+  box-shadow: 0 0 60px -15px rgba(249, 115, 22, 0.3);
+}
+```
+
+### Backgrounds
+
+```css
+/* Subtle grid pattern */
+.bg-grid {
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px
+  ),
+  linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px
+  );
+  background-size: 40px 40px;
+}
+
+/* Noise texture overlay */
+.bg-noise {
+  background-image: url('/noise.png');
+  opacity: 0.02;
+}
+```
+
+## Responsive Breakpoints
+
+| Breakpoint | Width    | Usage            |
+| ---------- | -------- | ---------------- |
+| `sm`       | 640px    | Mobile landscape |
+| `md`       | 768px    | Tablet           |
+| `lg`       | 1024px   | Desktop          |
+| `xl`       | 1280px   | Large desktop    |
+| `2xl`      | 1536px   | Extra large      |
+
+## Do's and Don'ts
+
+### Do
+
+- Use generous whitespace
+- Maintain consistent border radius (rounded-lg = 0.5rem)
+- Use subtle hover states
+- Keep text hierarchy clear
+- Use the primary color sparingly for emphasis
+
+### Don't
+
+- Use more than 2-3 colors per section
+- Create busy, cluttered layouts
+- Use harsh color transitions
+- Forget dark mode considerations (already dark theme)
+- Overuse animations

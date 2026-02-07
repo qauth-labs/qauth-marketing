@@ -1,0 +1,40 @@
+# Nx
+.nx/cache
+.nx/workspace-data
+
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+dist-ssr
+tmp
+*.local
+
+# Environment
+.env
+.env.local
+
+# Supabase
+.supabase/
+
+# IDE
+.DS_Store
+.idea
+.vscode
+.cursor/plans/
+
+# Testing
+coverage
+
+# TanStack/Nitro
+.nitro
+.tanstack
+.wrangler
+.output
+.vinxi
+
+# Other
+count.txt
+todos.json
+.github/issues/

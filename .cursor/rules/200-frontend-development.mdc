@@ -1,0 +1,360 @@
+---
+alwaysApply: true
+---
+
+# Frontend Development Guidelines
+
+## TanStack Start Patterns
+
+### Route Configuration
+
+```typescript
+// src/routes/__root.tsx
+import { createRootRoute, Outlet } from "@tanstack/react-router";
+import { Meta, Scripts } from "@tanstack/start";
+
+export const Route = createRootRoute({
+  component: RootComponent,
+  head: () => ({
+    meta: [
+      { charSet: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { title: "QAuth - Post-Quantum Ready Authentication" },
+      {
+        name: "description",
+        content:
+          "The headless-first identity platform built for the next era of cryptography.",
+      },
+    ],
+  }),
+});
+
+function RootComponent() {
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+      </head>
+      <body className="bg-background text-foreground antialiased">
+        <Outlet />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
+
+### Landing Page Route
+
+```typescript
+// src/routes/index.tsx
+import { createFileRoute } from "@tanstack/react-router";
+import { Hero } from "~/components/sections/hero";
+import { Features } from "~/components/sections/features";
+// ... other sections
+
+export const Route = createFileRoute("/")({
+  component: LandingPage,
+});
+
+function LandingPage() {
+  return (
+    <main>
+      <Hero />
+      <Features />
+      {/* ... other sections */}
+    </main>
+  );
+}
+```
+
+### Server Functions (Waitlist)
+
+```typescript
+// src/lib/actions.ts
+import { createServerFn } from "@tanstack/start";
+import { z } from "zod";
+
+const waitlistSchema = z.object({
+  email: z.string().email("Please enter a valid email"),
+});
+
+export const joinWaitlist = createServerFn({ method: "POST" })
+  .validator(waitlistSchema)
+  .handler(async ({ data }) => {
+    // In production, integrate with email service
+    console.log("Waitlist signup:", data.email);
+
+    // Example: Resend integration
+    // await resend.contacts.create({
+    //   email: data.email,
+    //   audienceId: process.env.RESEND_AUDIENCE_ID,
+    // });
+
+    return { success: true };
+  });
+```
+
+## Component Architecture
+
+### Section Components
+
+Each major section should be its own component:
+
+```typescript
+// src/components/sections/hero.tsx
+export function Hero() {
+  return (
+    <section className="relative min-h-screen flex items-center">
+      <div className="container mx-auto px-4">
+        {/* Hero content */}
+      </div>
+    </section>
+  );
+}
+```
+
+### Shared Components
+
+Create reusable components for repeated patterns:
+
+```typescript
+// src/components/shared/feature-card.tsx
+interface FeatureCardProps {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}
+
+export function FeatureCard({ icon, title, description }: FeatureCardProps) {
+  return (
+    <div className="p-6 rounded-xl bg-card border border-border">
+      <div className="mb-4 text-primary">{icon}</div>
+      <h3 className="text-lg font-semibold mb-2">{title}</h3>
+      <p className="text-muted-foreground">{description}</p>
+    </div>
+  );
+}
+```
+
+### Code Block Component
+
+```typescript
+// src/components/shared/code-block.tsx
+import { codeToHtml } from "shiki";
+
+interface CodeBlockProps {
+  code: string;
+  lang: "typescript" | "bash" | "json";
+  filename?: string;
+}
+
+export async function CodeBlock({ code, lang, filename }: CodeBlockProps) {
+  const html = await codeToHtml(code, {
+    lang,
+    theme: "vitesse-dark", // Or custom theme
+  });
+
+  return (
+    <div className="rounded-lg overflow-hidden bg-[#1a1a1a]">
+      {filename && (
+        <div className="px-4 py-2 border-b border-white/10 text-sm text-muted-foreground">
+          {filename}
+        </div>
+      )}
+      <div
+        className="p-4 overflow-x-auto text-sm"
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
+    </div>
+  );
+}
+```
+
+## Styling Guidelines
+
+### Design Tokens (CSS Variables)
+
+```css
+/* src/styles/globals.css */
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-background: #0d0d0d;
+  --color-foreground: #fafafa;
+  --color-card: #1a1a1a;
+  --color-border: #262626;
+  --color-muted: #a3a3a3;
+  --color-muted-foreground: #737373;
+
+  /* Primary (Orange) */
+  --color-primary: #f97316;
+  --color-primary-foreground: #0d0d0d;
+  --color-primary-hover: #fb923c;
+
+  /* Status Colors */
+  --color-success: #22c55e;
+  --color-warning: #eab308;
+  --color-info: #3b82f6;
+
+  /* Typography */
+  --font-display: "Cabinet Grotesk", sans-serif;
+  --font-body: "Geist", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+```
+
+### Component Styling Patterns
+
+Use Tailwind utility classes with consistent patterns:
+
+```typescript
+// Button variants
+const buttonVariants = {
+  primary: "bg-primary text-primary-foreground hover:bg-primary-hover",
+  secondary: "bg-card border border-border hover:bg-border/50",
+  ghost: "hover:bg-white/5",
+};
+
+// Card pattern
+const cardClass = "rounded-xl bg-card border border-border p-6";
+
+// Section spacing
+const sectionClass = "py-24 md:py-32";
+```
+
+### Animation Guidelines
+
+```typescript
+// Framer Motion variants for consistent animations
+export const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5, ease: "easeOut" },
+};
+
+export const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+// Usage
+<motion.div variants={staggerContainer} initial="initial" animate="animate">
+  <motion.div variants={fadeInUp}>Item 1</motion.div>
+  <motion.div variants={fadeInUp}>Item 2</motion.div>
+</motion.div>
+```
+
+## Roadmap/Status Component
+
+```typescript
+// src/components/sections/roadmap.tsx
+interface Milestone {
+  title: string;
+  description: string;
+  status: "completed" | "in-progress" | "planned";
+}
+
+const milestones: Milestone[] = [
+  {
+    title: "Project Foundation",
+    description: "Repository setup, CI/CD pipeline, architecture design",
+    status: "completed",
+  },
+  {
+    title: "User Registration & Email Verification",
+    description: "Core user flows, database, email verification flow",
+    status: "completed",
+  },
+  {
+    title: "Login & JWT Tokens",
+    description: "Implementing secure token issuance, refresh rotation, and session management",
+    status: "in-progress",
+  },
+  // ... more milestones
+];
+```
+
+## Forms
+
+### Waitlist Form Pattern
+
+```typescript
+// src/components/sections/waitlist.tsx
+import { useForm } from "@tanstack/react-form";
+import { zodValidator } from "@tanstack/zod-form-adapter";
+import { z } from "zod";
+import { joinWaitlist } from "~/lib/actions";
+
+const schema = z.object({
+  email: z.string().email("Please enter a valid email"),
+});
+
+export function WaitlistForm() {
+  const form = useForm({
+    defaultValues: { email: "" },
+    validatorAdapter: zodValidator(),
+    onSubmit: async ({ value }) => {
+      await joinWaitlist({ data: value });
+    },
+  });
+
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        form.handleSubmit();
+      }}
+      className="flex gap-3"
+    >
+      <form.Field name="email">
+        {(field) => (
+          <input
+            type="email"
+            placeholder="Enter your email address"
+            value={field.state.value}
+            onChange={(e) => field.handleChange(e.target.value)}
+            className="flex-1 px-4 py-3 bg-card border border-border rounded-lg"
+          />
+        )}
+      </form.Field>
+      <button type="submit" className="px-6 py-3 bg-primary rounded-lg font-medium">
+        Join Waitlist
+      </button>
+    </form>
+  );
+}
+```
+
+## Accessibility Requirements
+
+- All interactive elements must be keyboard accessible
+- Use semantic HTML (`<nav>`, `<main>`, `<section>`, `<footer>`)
+- Provide alt text for decorative images or mark as `aria-hidden`
+- Ensure color contrast ratios meet WCAG 2.1 AA (4.5:1 for text)
+- Focus indicators must be visible
+- Skip links for main content navigation
+
+## Performance Guidelines
+
+- Lazy load below-fold images
+- Use `loading="lazy"` on images
+- Optimize and compress all assets
+- Self-host fonts with `font-display: swap`
+- Minimize JavaScript bundle size
+- Use CSS for animations where possible
+- Preload critical assets
+
+## SEO Checklist
+
+- [ ] Proper heading hierarchy (single h1)
+- [ ] Meta description under 160 characters
+- [ ] Open Graph tags for social sharing
+- [ ] Structured data (Organization, SoftwareApplication)
+- [ ] Canonical URL
+- [ ] Sitemap.xml
+- [ ] Robots.txt

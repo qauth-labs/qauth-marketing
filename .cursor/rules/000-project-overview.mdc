@@ -1,0 +1,81 @@
+---
+alwaysApply: true
+---
+
+# QAuth Landing Page - Project Overview
+
+## Project Context
+
+**Project Name:** QAuth Landing Page  
+**Type:** Marketing Landing Page / Product Showcase  
+**Purpose:** Showcase QAuth - a post-quantum ready authentication platform
+
+## Core Goals
+
+1. **Visual Impact:** Create a distinctive, memorable landing page that communicates security and innovation
+2. **Developer Trust:** Establish credibility with security engineers and developers through professional presentation
+3. **Clear Value Proposition:** Communicate post-quantum security benefits without sacrificing developer experience
+4. **Lead Generation:** Capture waitlist signups for private alpha access
+
+## Design Direction
+
+**Aesthetic:** Dark, sophisticated, security-focused with warm accent colors (orange/amber)
+
+- **Primary Background:** Deep dark (#0D0D0D to #1A1A1A)
+- **Accent Color:** Warm orange/amber (#F97316 to #FB923C)
+- **Text:** High contrast white/gray hierarchy
+- **Code Blocks:** Darker panels with syntax highlighting
+- **Feel:** Professional, trustworthy, cutting-edge
+
+## Page Sections
+
+1. **Hero Section**
+   - Headline: "Post-Quantum Ready Authentication"
+   - Subheadline describing headless-first, OAuth 2.1 compliant platform
+   - CTA buttons: "Get Started" (primary), "View Docs" (secondary)
+   - Code preview showing installation/configuration
+   - Links: "Open Source", "Self Hosted"
+
+2. **Core Features**
+   - Post-Quantum Security (CRYSTALS-Kyber, ML-DSA)
+   - Headless-First architecture
+   - Dev Experience (typed SDKs, local testing)
+   - OAuth 2.1 & OIDC compliance
+
+3. **Development Status / Roadmap**
+   - Visual progress tracker with milestones
+   - Target Release: Q2 2026
+   - Statuses: Completed, In Progress, Planned
+
+4. **Simple Integration**
+   - Code example showing middleware usage
+   - Feature highlights: Type-safe, Zero-config, Edge-ready
+
+5. **Benefits Grid**
+   - Lightweight
+   - Fully Customizable
+   - Quantum Resistant
+
+6. **Waitlist CTA**
+   - "Join the Revolution"
+   - Email signup form
+   - Privacy-focused messaging
+
+7. **Footer**
+   - Navigation links
+   - Social links
+   - Version indicator
+
+## Key Requirements
+
+- **No Database:** Static landing page, waitlist form can use external service (e.g., Resend, ConvertKit)
+- **No Mobile App:** Web-only, but fully responsive
+- **Performance:** Fast load times, optimized assets
+- **Accessibility:** WCAG 2.1 AA compliance
+- **SEO:** Proper meta tags, Open Graph, structured data
+
+## Important Notes
+
+- This is a marketing landing page, not the actual QAuth product
+- Code examples are illustrative, showing future API design
+- Focus on conveying trust and technical competence

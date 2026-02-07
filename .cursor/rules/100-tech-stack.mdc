@@ -1,0 +1,170 @@
+---
+alwaysApply: true
+---
+
+# Technology Stack
+
+## Core Framework
+
+- **TanStack Start:** Full-stack React framework (latest stable)
+- **React:** 19.x
+- **TypeScript:** 5.7+
+- **Build Tool:** Vite (via TanStack Start)
+- **Package Manager:** Bun
+
+## TanStack Start Specifics
+
+### File-Based Routing
+
+- Routes in `src/routes/`
+- `__root.tsx` for root layout
+- `index.tsx` for landing page
+- API routes in `src/routes/api/` if needed
+
+### Server Functions
+
+- Use `createServerFn` for server-side logic (e.g., waitlist submission)
+- Keep server functions minimal since no database
+
+### SSR/SSG
+
+- Prefer static generation where possible for performance
+- SSR only where dynamic content is needed
+
+## UI & Styling
+
+### CSS Framework
+
+- **Tailwind CSS:** 4.x with CSS-first configuration
+- **Design Tokens:** CSS custom properties for theming
+
+### Component Library
+
+- **Shadcn UI:** For base components (Button, Input, Card, etc.)
+- **Customization:** Heavy theming to match dark security aesthetic
+
+### Icons
+
+- **Tabler Icons React:** Consistent, clean icon set
+
+### Animations
+
+- **CSS Animations:** Preferred for simple transitions
+- **Framer Motion:** For complex orchestrated animations
+- Focus areas: Hero entrance, feature cards, progress indicators
+
+### Typography
+
+- **Display Font:** Cabinet Grotesk
+- **Body Font:** Geist
+- **Mono Font:** JetBrains Mono
+
+## Code Highlighting
+
+- **Shiki:** For syntax highlighting in code examples
+- **Theme:** Custom dark theme matching site aesthetic
+
+## Forms & Validation
+
+- **TanStack Form:** For waitlist signup form
+- **Zod:** Schema validation
+- Keep forms minimal (email only for waitlist)
+
+## External Services (Optional)
+
+### Email/Waitlist
+
+- **Resend:** For email collection
+
+### Analytics (Optional)
+
+- **Plausible:** Privacy-friendly analytics
+- **Vercel Analytics:** If deploying to Vercel
+
+## Development Tools
+
+### Code Quality
+
+- **Ultracite:** Linting and formatting
+- **TypeScript:** Strict mode enabled
+
+### Development
+
+- **TanStack DevTools:** Router debugging
+- **React DevTools:** Component inspection
+
+## Deployment
+
+### Recommended Platforms
+- **Netlify**
+
+### Build Output
+
+- Static export where possible
+- Edge functions for any server logic
+
+## Project Structure
+
+```
+qauth-landing/
+├── src/
+│   ├── routes/
+│   │   ├── __root.tsx      # Root layout, meta tags
+│   │   ├── index.tsx       # Landing page
+│   │   └── api/            # API routes (if needed)
+│   ├── components/
+│   │   ├── ui/             # Shadcn components
+│   │   ├── sections/       # Page sections
+│   │   │   ├── hero.tsx
+│   │   │   ├── features.tsx
+│   │   │   ├── roadmap.tsx
+│   │   │   ├── integration.tsx
+│   │   │   ├── benefits.tsx
+│   │   │   ├── waitlist.tsx
+│   │   │   └── footer.tsx
+│   │   └── shared/         # Shared components
+│   │       ├── code-block.tsx
+│   │       ├── feature-card.tsx
+│   │       └── status-badge.tsx
+│   ├── lib/
+│   │   ├── utils.ts        # Utility functions
+│   │   └── constants.ts    # Site constants
+│   └── styles/
+│       └── globals.css     # Global styles, Tailwind
+├── public/
+│   ├── fonts/              # Self-hosted fonts
+│   └── og-image.png        # Open Graph image
+├── app.config.ts           # TanStack Start config
+├── tailwind.config.ts      # Tailwind configuration
+└── package.json
+```
+
+## Key Dependencies
+
+```json
+{
+  "dependencies": {
+    "@tanstack/react-router": "latest",
+    "@tanstack/start": "latest",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "@tabler/icons-react": "^3.x",
+    "framer-motion": "^11.x",
+    "shiki": "^1.x",
+    "zod": "^3.x"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.x",
+    "tailwindcss": "^4.x",
+    "typescript": "^5.7.x"
+  }
+}
+```
+
+## Version Verification
+
+**ALWAYS** verify package versions before installation:
+
+- Check npm for latest stable versions
+- Verify TanStack Start compatibility
+- Test locally before committing dependency changes
