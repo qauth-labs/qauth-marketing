@@ -1,6 +1,6 @@
 [build]
 command = "cd apps/qauth-landing && bun x vite build"
-publish = "apps/qauth-landing/.netlify/v1/functions"
+publish = "apps/qauth-landing/dist/client"
 
 [dev]
 command = "bun x vite dev"
