@@ -9,11 +9,13 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@qauth/ui": "workspace:*",
     "@base-ui/react": "^1.1.0",
+    "@fontsource-variable/dm-sans": "^5.2.8",
+    "@fontsource-variable/jetbrains-mono": "^5.2.8",
+    "@fontsource/instrument-serif": "^5.2.8",
     "@fontsource/krub": "^5.1.0",
     "@fontsource/raleway": "^5.1.0",
-    "@fontsource-variable/jetbrains-mono": "^5.2.8",
+    "@qauth/ui": "workspace:*",
     "@tabler/icons-react": "^3.36.1",
     "@tailwindcss/vite": "^4.0.6",
     "@tanstack/react-devtools": "^0.7.0",

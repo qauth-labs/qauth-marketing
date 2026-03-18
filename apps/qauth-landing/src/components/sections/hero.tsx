@@ -1,75 +1,136 @@
-import { Button } from '@qauth/ui'
-import { IconArrowRight, IconCheck, IconFileText } from '@tabler/icons-react'
+import { IconArrowRight, IconShield } from '@tabler/icons-react'
 import { motion, useReducedMotion } from 'framer-motion'
-import { HERO_CODE, SITE } from '../../lib/constants'
-import { getFadeInUpVariants, getScaleInVariants, getTransition, staggerContainer } from '../../lib/motion-variants'
-import { CodeBlock } from '../shared/code-block'
-
-const bullets = ['Open Source', 'Self-Hostable'] as const
+import { getFadeInUpVariants, getTransition, staggerContainer } from '../../lib/motion-variants'
+import { Terminal } from '../shared/terminal'
 
 export function Hero() {
   const reduceMotion = useReducedMotion()
   const fadeVariants = getFadeInUpVariants(!!reduceMotion)
-  const scaleVariants = getScaleInVariants(!!reduceMotion)
   const transition = getTransition(!!reduceMotion)
 
   return (
-    <section className="relative flex min-h-[90vh] items-center py-24 md:py-32">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 lg:grid-cols-2 lg:gap-16 lg:px-8">
-        <motion.div animate="animate" className="flex flex-col gap-8" initial="initial" variants={staggerContainer}>
-          <motion.div className="flex flex-col gap-4" variants={fadeVariants}>
-            <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-success/30 bg-success/10 px-3 py-1 font-medium text-success text-xs">
-              <span aria-hidden>⚡</span>
-              {SITE.releaseTag}
-            </span>
-            <h1 className="font-bold font-display text-4xl text-foreground leading-tight tracking-tight [text-shadow:0_0_32px_oklch(0.75_0.15_195_/_0.35)] md:text-5xl lg:text-6xl">
-              <span className="text-highlight">Post-Quantum</span>{' '}
-              <span className="text-foreground">
-                Ready <br /> Authentication.
-              </span>
-            </h1>
-          </motion.div>
-
-          <motion.p className="max-w-xl text-muted-foreground text-sm leading-relaxed" variants={fadeVariants}>
-            The headless-first identity platform built for the next era of cryptography. Fully OAuth 2.1 compliant,
-            developer-friendly, and secure by design.
-          </motion.p>
-
-          <motion.div className="flex flex-wrap items-center gap-4" variants={fadeVariants}>
-            <Button asChild className="rounded-lg" size="lg">
-              <a href="#waitlist">
-                Get Started
-                <IconArrowRight aria-hidden className="size-5" />
-              </a>
-            </Button>
-            <Button asChild className="rounded-lg" size="lg" variant="outline">
-              <a href="https://docs.qauth.dev" rel="noopener noreferrer" target="_blank">
-                <IconFileText aria-hidden className="size-5" />
-                View Docs
-              </a>
-            </Button>
-          </motion.div>
-
-          <motion.ul className="flex flex-wrap gap-6 text-muted-foreground text-sm" variants={fadeVariants}>
-            {bullets.map((item) => (
-              <li className="flex items-center gap-2" key={item}>
-                <IconCheck aria-hidden className="size-4 shrink-0 text-highlight" />
-                {item}
-              </li>
-            ))}
-          </motion.ul>
-        </motion.div>
-
-        <motion.div
-          animate="animate"
-          className="flex items-center justify-center"
-          initial="initial"
-          transition={transition}
-          variants={scaleVariants}
-        >
-          <CodeBlock className="w-full max-w-lg" code={HERO_CODE} filename="index.js" />
-        </motion.div>
+    <section className="relative overflow-hidden px-4 pt-44 pb-28 text-center md:pt-56 md:pb-36">
+      {/* Radial background glows */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
+        <div className="absolute -top-[20%] left-1/2 h-[700px] w-[900px] -translate-x-1/2 rounded-full bg-primary/15 opacity-60 blur-[60px]" />
+        <div className="absolute top-[10%] left-[55%] h-[500px] w-[600px] -translate-x-1/2 rounded-full bg-highlight/12 opacity-40 blur-[80px]" />
       </div>
+
+      <motion.div
+        animate="animate"
+        className="relative z-10 mx-auto max-w-[1200px]"
+        initial="initial"
+        variants={staggerContainer}
+      >
+        {/* Badges */}
+        <motion.div
+          className="mb-7 flex flex-wrap justify-center gap-2.5"
+          transition={transition}
+          variants={fadeVariants}
+        >
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-highlight/20 bg-highlight/10 px-3.5 py-1.5 font-mono font-semibold text-[12px] text-highlight tracking-wide">
+            <IconShield aria-hidden className="size-3" />
+            Post-Quantum Ready · Apache 2.0
+          </span>
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1.5 font-mono font-semibold text-[12px] text-primary tracking-wide">
+            EUDI Wallet · OID4VP · SIOPv2
+          </span>
+        </motion.div>
+
+        {/* Headline */}
+        <motion.h1
+          className="mx-auto mb-6 max-w-4xl font-display font-normal text-[clamp(48px,7vw,84px)] leading-[1.05] tracking-[-0.03em]"
+          transition={transition}
+          variants={fadeVariants}
+        >
+          Identity infrastructure
+          <br />
+          for the <em className="text-highlight italic">quantum</em> era
+        </motion.h1>
+
+        {/* Subheading */}
+        <motion.p
+          className="mx-auto mb-10 max-w-[620px] text-[18px] text-muted-foreground leading-[1.7]"
+          transition={transition}
+          variants={fadeVariants}
+        >
+          Open-source identity server with QAuth-to-QAuth instance federation — register once, authenticate everywhere.
+          Native EUDI Wallet, OID4VP, and post-quantum cryptography. Headless-first, self-hostable.
+        </motion.p>
+
+        {/* Actions */}
+        <motion.div
+          className="mb-16 flex flex-wrap justify-center gap-3.5"
+          transition={transition}
+          variants={fadeVariants}
+        >
+          <a
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-7 py-3.5 font-semibold text-[15px] text-primary-foreground shadow-sm transition-all hover:-translate-y-px hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            href="#code"
+          >
+            See How It Works
+            <IconArrowRight aria-hidden className="size-4" />
+          </a>
+          <a
+            className="inline-flex items-center gap-2 rounded-lg border border-border px-7 py-3.5 font-semibold text-[15px] text-foreground transition-colors hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            href="https://github.com/qauth-labs/qauth"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            View Source
+          </a>
+        </motion.div>
+
+        {/* Terminal preview */}
+        <motion.div className="mx-auto max-w-[720px]" transition={transition} variants={fadeVariants}>
+          <Terminal title="quickstart — zsh">
+            <div>
+              <p>
+                <span className="text-muted-foreground/70">#Deploy QAuth in 30 seconds</span>
+              </p>
+              <p>
+                <span className="text-primary">❯ </span>
+                <span className="text-muted-foreground">docker run </span>
+                <span className="text-primary">-p </span>
+                <span className="text-highlight">3000:3000 </span>
+                <span className="text-highlight">qauth/auth-server</span>
+              </p>
+              <br />
+              <p>
+                <span className="text-muted-foreground/70">#Or use the TypeScript SDK</span>
+              </p>
+              <p>
+                <span className="text-primary">❯ </span>
+                <span className="text-muted-foreground">npm install </span>
+                <span className="text-highlight">@qauth-labs/core</span>
+              </p>
+              <br />
+              <p>
+                <span className="text-[#c9a0dc]">import</span>
+                {' { '}
+                <span className="text-[#d4a843]">QAuth</span>
+                {' } '}
+                <span className="text-[#c9a0dc]">from</span>{' '}
+                <span className="text-highlight">&apos;@qauth-labs/core&apos;</span>
+              </p>
+              <p>
+                <span className="text-[#c9a0dc]">const</span>
+                {' auth = '}
+                <span className="text-[#c9a0dc]">new</span> <span className="text-[#d4a843]">QAuth</span>
+                {'({ '}
+                <span className="text-primary">domain</span>
+                {': '}
+                <span className="text-highlight">&apos;auth.yourapp.com&apos;</span>
+                {' })'}
+                <span
+                  aria-hidden
+                  className="ml-0.5 inline-block h-[16px] w-[8px] translate-y-[2px] animate-[blink_1s_steps(1)_infinite] bg-highlight"
+                />
+              </p>
+            </div>
+          </Terminal>
+        </motion.div>
+      </motion.div>
     </section>
   )
 }

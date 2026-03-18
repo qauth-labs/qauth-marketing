@@ -46,7 +46,7 @@ export const ROADMAP_MILESTONES: Array<{
     title: 'Login & JWT Tokens',
     description: 'Implementing secure token issuance, refresh rotation, and session management',
     status: 'in-progress',
-    viewCodeHref: 'https://github.com',
+    viewCodeHref: 'https://github.com/qauth-labs/qauth',
   },
   {
     title: 'OAuth 2.1 Flow',
@@ -78,19 +78,19 @@ export const BENEFITS = [
 export const INTEGRATION_CHECKLIST = ['Type-safe by default', 'Zero-config middleware', 'Edge-ready latency'] as const
 
 export const HERO_CODE = `# Install the QAuth SDK
-npm install @qauth/sdk
+npm install @qauth-labs/sdk
 
 # Initialize secure client
 const qauth = new QAuthClient({
-  clientId: process.env.QAUTH_CLIENT_ID,
-  algorithm: "CRYSTALS-Kyber", // Quantum-safe
-  headless: true,
+&nbsp;&nbsp;clientId: process.env.QAUTH_CLIENT_ID,
+&nbsp;&nbsp;algorithm: "CRYSTALS-Kyber", // Quantum-safe
+&nbsp;&nbsp;headless: true,
 });
 
 // Ready to authenticate
 await client.authenticate();`
 
-export const INTEGRATION_CODE = `import { QAuthMiddleware } from "@qauth/nextjs";
+export const INTEGRATION_CODE = `import { QAuthMiddleware } from "@qauth-labs/nextjs";
 
 // Protect your routes with quantum-safe auth
 export const config = {
@@ -98,10 +98,10 @@ export const config = {
 };
 
 export default QAuthMiddleware({
-  tokenFresh: 24 * 60 * 60,
-  cookieShared: "strict-quantum",
-  refreshAt: 0.25,
-  customTest: (req) => {
-    return !req.headers["x-skip-auth"];
-  },
+&nbsp;&nbsp;tokenFresh: 24 * 60 * 60,
+&nbsp;&nbsp;cookieShared: "strict-quantum",
+&nbsp;&nbsp;refreshAt: 0.25,
+&nbsp;&nbsp;customTest: (req) => {
+&nbsp;&nbsp;&nbsp;&nbsp;return !req.headers["x-skip-auth"];
+&nbsp;&nbsp;&nbsp;&nbsp;},
 });`

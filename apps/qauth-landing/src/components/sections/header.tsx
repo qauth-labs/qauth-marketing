@@ -1,15 +1,32 @@
-import { Button } from '@qauth/ui'
-import { IconArrowRight, IconCode } from '@tabler/icons-react'
-import { Link } from '@tanstack/react-router'
+import { IconBrandGithub } from '@tabler/icons-react'
 import { motion, useReducedMotion } from 'framer-motion'
-import { SITE } from '../../lib/constants'
 import { getFadeInUpVariants } from '../../lib/motion-variants'
 
-const navLinks: Array<{ label: string; to: string; external?: boolean }> = [
-  { label: 'Features', to: '#features' },
-  { label: 'Roadmap', to: '#roadmap' },
-  { label: 'Docs', to: 'https://docs.qauth.dev', external: true },
+interface NavLink {
+  label: string
+  href: string
+  external?: boolean
+}
+
+const navLinks: NavLink[] = [
+  { label: 'Features', href: '#features' },
+  { label: 'Quickstart', href: '#code' },
+  { label: 'Post-Quantum', href: '#pqc' },
+  { label: 'Releases', href: 'https://github.com/qauth-labs/qauth/releases', external: true },
+  { label: 'GitHub', href: 'https://github.com/qauth-labs/qauth', external: true },
 ]
+
+function QAuthLogo() {
+  return (
+    <a
+      aria-label="QAuth Labs home"
+      className="rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+      href="#"
+    >
+      <img alt="QAuth Labs" className="h-8 w-auto" height={32} src="/logo.svg" />
+    </a>
+  )
+}
 
 export function Header() {
   const reduceMotion = useReducedMotion()
@@ -18,46 +35,44 @@ export function Header() {
   return (
     <motion.header
       animate="animate"
-      className="sticky top-0 z-50 border-border border-b bg-background/80 backdrop-blur-sm"
+      className="fixed top-0 right-0 left-0 z-50 border-border/40 border-b bg-background/80 backdrop-blur-xl backdrop-saturate-150"
       initial="initial"
       variants={variants}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 md:px-8">
-        <Link aria-label={`${SITE.name} home`} className="flex items-center transition-opacity hover:opacity-90" to="/">
-          <img alt={SITE.name} className="h-8 w-auto" height={32} src="/logo-light.svg" width={116} />
-        </Link>
+      <div className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-4">
+        <QAuthLogo />
 
-        <nav aria-label="Main navigation" className="flex items-center gap-6">
-          {navLinks.map(({ label, to, external }) => (
+        <nav aria-label="Main navigation" className="hidden items-center gap-8 md:flex">
+          {navLinks.map(({ label, href, external }) => (
             <a
-              href={to}
+              className="rounded font-medium text-[14px] text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              href={href}
               key={label}
               {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              className="text-muted-foreground text-sm transition-colors hover:text-foreground"
             >
               {label}
             </a>
           ))}
-          <a
-            aria-label="Integration code"
-            className="flex items-center gap-1 text-muted-foreground text-sm transition-colors hover:text-foreground"
-            href="#integration"
-          >
-            <IconCode aria-hidden className="size-4" />
-            <span className="sr-only">Code</span>
-          </a>
         </nav>
 
         <div className="flex items-center gap-3">
-          <Button asChild size="default" variant="ghost">
-            <a href="/">Login</a>
-          </Button>
-          <Button asChild className="rounded-lg" size="default">
-            <a href="#waitlist">
-              Get Started
-              <IconArrowRight aria-hidden className="size-4" />
-            </a>
-          </Button>
+          <a
+            className="hidden rounded-lg border border-border px-4 py-2 font-semibold text-[14px] text-foreground transition-colors hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:inline-flex"
+            href="https://github.com/qauth-labs/qauth/releases"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Changelog
+          </a>
+          <a
+            className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2 font-semibold text-[14px] text-primary-foreground shadow-sm transition-all hover:-translate-y-px hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            href="https://github.com/qauth-labs/qauth"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <IconBrandGithub aria-hidden className="size-4" />
+            Star on GitHub
+          </a>
         </div>
       </div>
     </motion.header>
