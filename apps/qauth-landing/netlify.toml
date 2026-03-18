@@ -1,5 +1,5 @@
 [build]
-command = "bun x vite build --config apps/qauth-landing/vite.config.ts"
+command = "cd apps/qauth-landing && bun x vite build"
 publish = "apps/qauth-landing/.netlify/v1/static"
 
 [dev]
