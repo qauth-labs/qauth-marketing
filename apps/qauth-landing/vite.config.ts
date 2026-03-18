@@ -1,11 +1,11 @@
 import { join } from 'node:path'
+import netlify from '@netlify/vite-plugin-tanstack-start'
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin'
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin'
 import tailwindcss from '@tailwindcss/vite'
 import { devtools } from '@tanstack/devtools-vite'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
-import { nitro } from 'nitro/vite'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
@@ -18,7 +18,7 @@ export default defineConfig({
     devtools(),
     tailwindcss(),
     tanstackStart(),
-    nitro(),
+    netlify(),
     viteReact(),
   ],
   server: {

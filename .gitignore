@@ -33,8 +33,10 @@ coverage
 .wrangler
 .output
 .vinxi
+.netlify
 
 # Other
 count.txt
 todos.json
 .github/issues/
+*.local.json
