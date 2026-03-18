@@ -1,8 +1,2 @@
 [build]
-  base    = "apps/qauth-landing"
-  command = "bun x vite build"
-  publish = ".netlify/v1/static"
-
-[dev]
-  command = "bun x vite dev"
-  port    = 3000
+base = "apps/qauth-landing"
