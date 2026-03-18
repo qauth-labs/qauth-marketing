@@ -18,6 +18,8 @@
     "@nx/node": "^22.3.3",
     "@nx/react": "^22.3.3",
     "@nx/vite": "^22.3.3",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
     "nx": "^22.3.3",
     "typescript": "^5.9.3",
     "ultracite": "7.0.8",
