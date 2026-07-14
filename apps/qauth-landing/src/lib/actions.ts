@@ -25,6 +25,7 @@ export const joinWaitlist = createServerFn({ method: 'POST' })
     })
 
     if (error && !error.message.toLowerCase().includes(ALREADY_SUBSCRIBED_MESSAGE)) {
+      console.error('Resend contacts.create failed:', error.name, error.statusCode, error.message)
       throw new Error('Something went wrong. Please try again.')
     }
 
