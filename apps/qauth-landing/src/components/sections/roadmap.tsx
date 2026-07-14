@@ -38,11 +38,18 @@ export function Roadmap({ asPageTitle = false }: RoadmapProps) {
             <TitleTag className="font-display font-normal text-[clamp(32px,4vw,48px)] leading-[1.15] tracking-[-0.02em]">
               Development Status
             </TitleTag>
-            <p className="mt-4 text-muted-foreground text-sm">Building a truly quantum-safe identity.</p>
+            <p className="mt-4 text-muted-foreground text-sm">
+              The near-term roadmap ships today. The long-term platform is next.
+            </p>
           </div>
-          <span className="rounded-lg border border-border bg-card px-4 py-2 text-muted-foreground text-sm">
-            Target Release: {SITE.targetRelease}
-          </span>
+          <div className="flex flex-wrap gap-2">
+            <span className="rounded-lg border border-border bg-card px-4 py-2 text-muted-foreground text-sm">
+              {SITE.nearTermStatus}
+            </span>
+            <span className="rounded-lg border border-border bg-card px-4 py-2 text-muted-foreground text-sm">
+              {SITE.longTermTarget}
+            </span>
+          </div>
         </motion.div>
 
         <motion.ul

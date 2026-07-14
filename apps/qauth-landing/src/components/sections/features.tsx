@@ -6,34 +6,34 @@ const FEATURES = [
   {
     accent: 'terra',
     icon: IconShield,
-    title: 'Post-Quantum Crypto',
+    title: 'Post-Quantum Ready',
     description:
-      'ML-DSA-65 hybrid signatures with Ed25519 fallback. Crypto-agile architecture — swap algorithms without touching business logic.',
-    tag: 'NIST FIPS 204',
+      'Crypto-agile interfaces let you swap signing algorithms without touching business logic. Ed25519 (EdDSA) ships today; ML-DSA-65 hybrid signatures are the long-term target — Phase 5, 2027.',
+    tag: 'Ed25519 · EdDSA',
   },
   {
     accent: 'cyan',
     icon: IconCube,
     title: 'Headless-First',
     description:
-      'Full REST API with no mandatory UI. Ship your own branded login experience, connect any frontend, or use our composable UI kit.',
-    tag: '@qauth-labs/auth-ui',
+      'A full REST API with no mandatory UI. Call the OAuth 2.1 and OIDC endpoints directly from any framework and build your own branded login experience — no bundled UI to fight.',
+    tag: 'OAuth 2.1 · OIDC 1.0',
   },
   {
     accent: 'terra',
     icon: IconNetwork,
-    title: 'Instance Federation',
+    title: 'MCP & Agent Authorization',
     description:
-      'A user registered on any QAuth instance can authenticate on yours — no re-registration, no custom integration. One identity across the entire QAuth network, gated by a proper consent screen.',
-    tag: 'QAuth-to-QAuth',
+      'The self-hostable OAuth 2.1 authorization server built for MCP servers and AI agents. RFC 8693 on-behalf-of delegation, ReadOnly / Admin / Exec scope modes, and step-up authentication before dangerous operations — validated end-to-end with Claude Code.',
+    tag: 'RFC 8693 · mcp-guard',
   },
   {
     accent: 'cyan',
     icon: IconCode,
-    title: 'TypeScript + Rust',
+    title: 'TypeScript-Native',
     description:
-      'Application logic in TypeScript for velocity. Performance-critical crypto in Rust via WASM/napi-rs — zero-copy, production-hardened.',
-    tag: 'aws-lc-rs · napi-rs',
+      'A single Fastify and TypeScript codebase — no native toolchain required to run it. Rust and napi-rs bindings for performance-critical signing are on the long-term roadmap.',
+    tag: 'Fastify · jose',
   },
   {
     accent: 'terra',
@@ -41,15 +41,15 @@ const FEATURES = [
     title: 'Self-Hostable',
     description:
       'One Docker command. Your infrastructure, your data, your compliance. No telemetry, no vendor lock-in, Apache 2.0 licensed.',
-    tag: 'docker · k8s',
+    tag: 'Docker Compose',
   },
   {
     accent: 'cyan',
     icon: IconId,
-    title: 'Wallet Credentials',
+    title: 'Wallet Federation',
     description:
-      'Native eIDAS 2.0 EUDI Wallet support via OID4VP and SIOPv2. Users authenticate with verifiable credentials — national IDs, diplomas, professional licences — no passwords, no forms.',
-    tag: 'SIOPv2 · OID4VP · SD-JWT VC',
+      "eIDAS 2.0 EUDI Wallet support via OID4VC and SIOPv2 is the long-term platform we're building toward — verifiable credentials as a first-class upstream identity source, with no re-architecture required downstream.",
+    tag: 'OID4VC · SIOPv2 · Planned',
   },
 ] as const
 

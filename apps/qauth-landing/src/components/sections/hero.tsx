@@ -28,12 +28,12 @@ export function Hero() {
           transition={transition}
           variants={fadeVariants}
         >
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1.5 font-mono font-semibold text-[12px] text-primary tracking-wide">
+            OAuth 2.1 · MCP Authorization
+          </span>
           <span className="inline-flex items-center gap-1.5 rounded-full border border-highlight/20 bg-highlight/10 px-3.5 py-1.5 font-mono font-semibold text-[12px] text-highlight tracking-wide">
             <IconShield aria-hidden className="size-3" />
             Post-Quantum Ready · Apache 2.0
-          </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1.5 font-mono font-semibold text-[12px] text-primary tracking-wide">
-            EUDI Wallet · OID4VP · SIOPv2
           </span>
         </motion.div>
 
@@ -43,9 +43,9 @@ export function Hero() {
           transition={transition}
           variants={fadeVariants}
         >
-          Identity infrastructure
+          The OAuth 2.1 server
           <br />
-          for the <em className="text-highlight italic">quantum</em> era
+          for <em className="text-highlight italic">MCP</em> and AI agents
         </motion.h1>
 
         {/* Subheading */}
@@ -54,8 +54,9 @@ export function Hero() {
           transition={transition}
           variants={fadeVariants}
         >
-          Open-source identity server with QAuth-to-QAuth instance federation — register once, authenticate everywhere.
-          Native EUDI Wallet, OID4VP, and post-quantum cryptography. Headless-first, self-hostable.
+          Open-source, self-hostable authorization for MCP servers and AI agents — validated end-to-end with Claude
+          Code. On-behalf-of agent delegation, audience-bound tokens, and a crypto-agile core built for the post-quantum
+          era.
         </motion.p>
 
         {/* Actions */}
@@ -86,43 +87,31 @@ export function Hero() {
           <Terminal title="quickstart — zsh">
             <div>
               <p>
-                <span className="text-muted-foreground/70">#Deploy QAuth in 30 seconds</span>
+                <span className="text-muted-foreground/70">#Self-host QAuth</span>
               </p>
               <p>
                 <span className="text-primary">❯ </span>
-                <span className="text-muted-foreground">docker run </span>
-                <span className="text-primary">-p </span>
-                <span className="text-highlight">3000:3000 </span>
-                <span className="text-highlight">qauth/auth-server</span>
+                <span className="text-muted-foreground">git clone </span>
+                <span className="text-highlight">qauth-labs/qauth </span>
+                <span className="text-muted-foreground">{'&& cd qauth'}</span>
               </p>
-              <br />
               <p>
-                <span className="text-muted-foreground/70">#Or use the TypeScript SDK</span>
+                <span className="text-muted-foreground/70">{'# generate JWT keys, then:'}</span>
               </p>
               <p>
                 <span className="text-primary">❯ </span>
-                <span className="text-muted-foreground">npm install </span>
-                <span className="text-highlight">@qauth-labs/core</span>
+                <span className="text-muted-foreground">docker compose up -d</span>
               </p>
               <br />
               <p>
-                <span className="text-[var(--code-keyword)]">import</span>
-                {' { '}
-                <span className="text-[var(--code-entity)]">QAuth</span>
-                {' } '}
-                <span className="text-[var(--code-keyword)]">from</span>{' '}
-                <span className="text-highlight">&apos;@qauth-labs/core&apos;</span>
+                <span className="text-muted-foreground/70">#Issue a token for your agent</span>
               </p>
               <p>
-                <span className="text-[var(--code-keyword)]">const</span>
-                {' auth = '}
-                <span className="text-[var(--code-keyword)]">new</span>{' '}
-                <span className="text-[var(--code-entity)]">QAuth</span>
-                {'({ '}
-                <span className="text-primary">domain</span>
-                {': '}
-                <span className="text-highlight">&apos;auth.yourapp.com&apos;</span>
-                {' })'}
+                <span className="text-primary">❯ </span>
+                <span className="text-muted-foreground">curl -X POST </span>
+                <span className="text-highlight">http://localhost:3000/oauth/token </span>
+                <span className="text-primary">-d </span>
+                <span className="text-highlight">grant_type=client_credentials</span>
                 <span
                   aria-hidden
                   className="ml-0.5 inline-block h-[16px] w-[8px] translate-y-[2px] animate-[blink_1s_steps(1)_infinite] bg-highlight"

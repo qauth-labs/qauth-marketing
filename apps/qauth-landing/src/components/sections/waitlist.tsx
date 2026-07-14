@@ -38,8 +38,8 @@ export function Waitlist() {
               Join the <span className="text-highlight">Revolution</span>
             </h2>
             <p className="text-[17px] text-muted-foreground leading-[1.7]">
-              We are currently in private alpha. Be the first to know when we launch the public beta and secure your
-              spot.
+              QAuth is open-source and self-hostable today. Want a hosted, zero-DevOps version? Join the list for early
+              access when Auth as a Service ships.
             </p>
           </div>
 

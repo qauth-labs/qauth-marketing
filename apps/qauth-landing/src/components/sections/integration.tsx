@@ -6,18 +6,18 @@ import { Terminal } from '../shared/terminal'
 const STEPS = [
   {
     num: '1',
-    title: 'Install the SDK',
-    desc: 'One package. TypeScript types included.',
+    title: 'Self-host with Docker',
+    desc: 'Clone the repo and run docker compose up -d to start QAuth with PostgreSQL and Redis. Interactive API docs ship at /docs.',
   },
   {
     num: '2',
-    title: 'Initialize the client',
-    desc: 'Point to your QAuth instance — hosted or self-hosted.',
+    title: 'Protect your MCP server',
+    desc: 'Register @qauth-labs/mcp-guard on your resource server. It serves RFC 9728 metadata and returns a 401 challenge to unauthenticated requests.',
   },
   {
     num: '3',
-    title: 'Authenticate users',
-    desc: 'Passkeys, EUDI Wallets, and federated QAuth identities first. Email/password available for legacy migration.',
+    title: 'Let agents authenticate',
+    desc: 'MCP clients like Claude Code discover your authorization server, register dynamically, and complete authorization_code with PKCE for an audience-bound token.',
   },
 ] as const
 
@@ -41,8 +41,8 @@ export function Integration() {
                 of your way
               </h2>
               <p className="mb-8 max-w-[440px] text-[17px] text-muted-foreground leading-[1.7]">
-                Built for the next era of identity — federated QAuth instances, EUDI Wallets, and passkeys.
-                Email/password is a migration path, not the destination.
+                Self-host QAuth with Docker Compose, then protect your MCP servers with standards-based OAuth 2.1 — RFC
+                9728 discovery, dynamic client registration, and PKCE. No proprietary SDK required.
               </p>
             </motion.div>
 
@@ -75,118 +75,123 @@ export function Integration() {
 
           {/* Right: code terminal */}
           <motion.div animate="animate" initial="initial" style={{ transitionDelay: '0.15s' }} variants={variants}>
-            <Terminal title="app.ts">
+            <Terminal title="resource-server.ts">
+              <p>
+                <span className="text-[var(--code-keyword)]">import</span>
+                {' Fastify '}
+                <span className="text-[var(--code-keyword)]">from</span>{' '}
+                <span className="text-highlight">&apos;fastify&apos;</span>
+              </p>
               <p>
                 <span className="text-[var(--code-keyword)]">import</span>
                 {' { '}
-                <span className="text-[var(--code-entity)]">QAuth</span>
+                <span className="text-[var(--code-entity)]">mcpGuardPlugin</span>
                 {' } '}
                 <span className="text-[var(--code-keyword)]">from</span>{' '}
-                <span className="text-highlight">&apos;@qauth-labs/core&apos;</span>
+                <span className="text-highlight">&apos;@qauth-labs/mcp-guard&apos;</span>
               </p>
               <br />
               <p>
                 <span className="text-[var(--code-keyword)]">const</span>
-                {' auth = '}
-                <span className="text-[var(--code-keyword)]">new</span>{' '}
-                <span className="text-[var(--code-entity)]">QAuth</span>
-                {'({'}
-              </p>
-              <p>
-                &nbsp;&nbsp;
-                <span className="text-primary">domain</span>
-                {': '}
-                <span className="text-highlight">&apos;auth.yourapp.com&apos;</span>
-                {','}
-              </p>
-              <p>
-                &nbsp;&nbsp;
-                <span className="text-primary">projectId</span>
-                {': '}
-                <span className="text-highlight">&apos;your-project-id&apos;</span>
-                {','}
-              </p>
-              <p>{'})'}</p>
-              <br />
-              <p>
-                <span className="text-muted-foreground/70">{'// Passkey — passwordless, phishing-resistant'}</span>
-              </p>
-              <p>
-                <span className="text-[var(--code-keyword)]">const</span>
-                {' { user, session } = '}
-                <span className="text-[var(--code-keyword)]">await</span>
-                {' auth.'}
-                <span className="text-[var(--code-entity)]">signInWithPasskey</span>
+                {' app = '}
+                <span className="text-[var(--code-entity)]">Fastify</span>
                 {'()'}
               </p>
               <br />
               <p>
                 <span className="text-muted-foreground/70">
-                  {'// Instance federation — user from another QAuth server'}
+                  {'// Protect your MCP resource server — audience-bound tokens only'}
                 </span>
               </p>
               <p>
-                <span className="text-[var(--code-keyword)]">const</span>
-                {' { user, session } = '}
                 <span className="text-[var(--code-keyword)]">await</span>
-                {' auth.'}
-                <span className="text-[var(--code-entity)]">federateFrom</span>
-                {'({'}
+                {' app.'}
+                <span className="text-[var(--code-entity)]">register</span>
+                {'('}
+                <span className="text-[var(--code-entity)]">mcpGuardPlugin</span>
+                {', {'}
               </p>
               <p>
                 &nbsp;&nbsp;
-                <span className="text-primary">issuer</span>
+                <span className="text-primary">resource</span>
                 {': '}
-                <span className="text-highlight">&apos;auth.partner.com&apos;</span>
+                <span className="text-highlight">&apos;https://mcp.yourapp.com&apos;</span>
                 {','}
+              </p>
+              <p>
+                &nbsp;&nbsp;
+                <span className="text-primary">authorizationServer</span>
+                {': '}
+                <span className="text-highlight">&apos;https://auth.yourapp.com&apos;</span>
+                {','}
+              </p>
+              <p>
+                &nbsp;&nbsp;
+                <span className="text-primary">requiredScopes</span>
+                {': ['}
+                <span className="text-highlight">&apos;documents:read&apos;</span>
+                {'],'}
               </p>
               <p>{'})'}</p>
               <br />
               <p>
-                <span className="text-muted-foreground/70">{'// EUDI Wallet — OID4VP credential presentation'}</span>
-              </p>
-              <p>
-                <span className="text-[var(--code-keyword)]">const</span>
-                {' { user, session } = '}
-                <span className="text-[var(--code-keyword)]">await</span>
-                {' auth.'}
-                <span className="text-[var(--code-entity)]">presentCredential</span>
-                {'({'}
+                <span className="text-[var(--code-keyword)]">app</span>
+                {'.get('}
+                <span className="text-highlight">&apos;/mcp&apos;</span>
+                {', { '}
+                <span className="text-primary">preHandler</span>
+                {': app.'}
+                <span className="text-[var(--code-entity)]">requireBearer</span>
+                {' }, '}
+                <span className="text-[var(--code-keyword)]">async</span>
+                {' (request) => {'}
               </p>
               <p>
                 &nbsp;&nbsp;
-                <span className="text-primary">descriptor</span>
-                {': { '}
-                <span className="text-primary">id</span>
-                {': '}
-                <span className="text-highlight">&apos;eu.national-id&apos;</span>
-                {' }'}
-                {','}
+                <span className="text-muted-foreground/70">
+                  {'// request.tokenClaims — verified signature, issuer, audience, scope'}
+                </span>
+              </p>
+              <p>
+                &nbsp;&nbsp;
+                <span className="text-[var(--code-keyword)]">return</span>
+                {' { tools: listTools() }'}
               </p>
               <p>{'})'}</p>
               <br />
               <p>
-                <span className="text-muted-foreground/70">{'// email/password — available for legacy migration'}</span>
+                <span className="text-muted-foreground/70">{'// No token → 401 Unauthorized'}</span>
               </p>
               <p>
-                <span className="text-[var(--code-keyword)]">const</span>
-                {' { user, session } = '}
-                <span className="text-[var(--code-keyword)]">await</span>
-                {' auth.'}
-                <span className="text-[var(--code-entity)]">signInWithPassword</span>
-                {'({'}
+                <span className="text-muted-foreground/70">{'// WWW-Authenticate: Bearer resource_metadata='}</span>
               </p>
               <p>
-                &nbsp;&nbsp;
-                <span className="text-primary">email</span>
-                {': '}
-                <span className="text-highlight">&apos;user@example.com&apos;</span>
-                {','}
-                {'  '}
-                <span className="text-primary">password</span>
-                {','}
+                <span className="text-muted-foreground/70">
+                  {'//   "https://mcp.yourapp.com/.well-known/oauth-protected-resource"'}
+                </span>
               </p>
-              <p>{'})'}</p>
+              <br />
+              <p>
+                <span className="text-muted-foreground/70">
+                  {'// The MCP client (e.g. Claude Code) discovers your auth server from'}
+                </span>
+              </p>
+              <p>
+                <span className="text-muted-foreground/70">
+                  {'// that document, registers via CIMD or RFC 7591, then runs'}
+                </span>
+              </p>
+              <p>
+                <span className="text-muted-foreground/70">
+                  {'// authorization_code + PKCE for an audience-bound access token.'}
+                </span>
+              </p>
+              <br />
+              <p>
+                <span className="text-muted-foreground/70">
+                  {'// Authorization: Bearer <token>  →  mcp-guard verifies it  →  200 OK'}
+                </span>
+              </p>
             </Terminal>
           </motion.div>
         </div>
