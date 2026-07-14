@@ -31,15 +31,15 @@ export function Waitlist() {
 
   return (
     <section className="scroll-mt-24 py-24 md:py-32" id="waitlist">
-      <div className="mx-auto max-w-2xl px-4 text-center md:px-8">
+      <div className="mx-auto max-w-2xl px-6 text-center">
         <motion.div animate="animate" className="flex flex-col gap-8" initial="initial" variants={variants}>
           <div>
-            <h2 className="font-bold text-3xl text-foreground md:text-4xl">
+            <h2 className="mb-4 font-display font-normal text-[clamp(32px,4vw,48px)] leading-[1.15] tracking-[-0.02em]">
               Join the <span className="text-highlight">Revolution</span>
             </h2>
-            <p className="mt-4 text-muted-foreground text-sm">
-              We are currently in private alpha. Be the first to know when we launch the public beta and secure your
-              spot.
+            <p className="text-[17px] text-muted-foreground leading-[1.7]">
+              QAuth is open-source and self-hostable today. Want a hosted, zero-DevOps version? Join the list for early
+              access when Auth as a Service ships.
             </p>
           </div>
 

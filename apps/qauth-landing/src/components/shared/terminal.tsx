@@ -13,7 +13,7 @@ export function Terminal({ title, children, className, compact = false }: Termin
       aria-label={title ?? 'Code example'}
       className={cn(
         'overflow-hidden rounded-xl border border-border bg-card',
-        'shadow-[0_24px_80px_-12px_rgba(0,0,0,0.5),0_0_0_1px_oklch(1_0_0_/_5%)]',
+        'shadow-[0_24px_80px_-12px_rgba(0,0,0,0.5),0_0_0_1px_var(--glow-ring)]',
         className,
       )}
       role="region"

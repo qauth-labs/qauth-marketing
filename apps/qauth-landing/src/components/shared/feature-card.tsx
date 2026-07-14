@@ -13,7 +13,7 @@ export function FeatureCard({ icon, title, description, className }: FeatureCard
   return (
     <Card
       className={cn(
-        'rounded-xl border-border transition-colors hover:border-primary/50 hover:shadow-[0_0_24px_-4px_oklch(0.75_0.15_195_/_0.15)]',
+        'rounded-xl border-border transition-colors hover:border-primary/50 hover:shadow-[0_0_24px_-4px_var(--glow-highlight)]',
         className,
       )}
     >

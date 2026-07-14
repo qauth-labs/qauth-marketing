@@ -18,7 +18,7 @@ export function Deploy() {
             self-hostable
           </h2>
           <p className="mx-auto max-w-[560px] text-[17px] text-muted-foreground leading-[1.7]">
-            QAuth is open-source and designed for self-hosting. A managed cloud offering is on the roadmap for Q2 2026.
+            QAuth is open-source and designed for self-hosting. A managed cloud offering is planned for a future phase.
           </p>
         </motion.div>
 
@@ -31,7 +31,7 @@ export function Deploy() {
         >
           {/* Self-hosted — available now */}
           <motion.div
-            className="group rounded-2xl border border-highlight/40 bg-card p-8 transition-all hover:border-highlight/60 hover:shadow-[0_0_40px_-8px_oklch(0.75_0.15_195_/_0.15)]"
+            className="group rounded-2xl border border-highlight/40 bg-card p-8 transition-all hover:border-highlight/60 hover:shadow-[0_0_40px_-8px_var(--glow-highlight)]"
             variants={variants}
           >
             <span className="mb-5 inline-flex items-center gap-1.5 rounded-full border border-highlight/20 bg-highlight/12 px-3.5 py-1.5 font-mono font-semibold text-[12px] text-highlight">
@@ -45,14 +45,14 @@ export function Deploy() {
             <Terminal compact>
               <p>
                 <span className="text-primary">❯ </span>
-                <span className="text-muted-foreground">docker run </span>
-                <span className="text-primary">-p </span>
-                <span className="text-highlight">3000:3000</span>
+                <span className="text-muted-foreground">git clone </span>
+                <span className="text-highlight">qauth-labs/qauth</span>
                 {' \\'}
               </p>
               <p>
                 {'  '}
-                <span className="text-highlight">qauth/auth-server</span>
+                <span className="text-muted-foreground">{'&& cd qauth && '}</span>
+                <span className="text-highlight">docker compose up -d</span>
               </p>
             </Terminal>
           </motion.div>
@@ -63,13 +63,14 @@ export function Deploy() {
             variants={variants}
           >
             <span className="mb-5 inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3.5 py-1.5 font-mono font-semibold text-[12px] text-muted-foreground">
-              Planned · Q2 2026
+              Planned · Future Phase
             </span>
             <h3 className="mb-3 font-sans font-semibold text-[20px] text-muted-foreground tracking-[-0.01em]">
               Cloud Managed
             </h3>
             <p className="mb-6 text-[14px] text-muted-foreground leading-[1.65]">
-              Managed hosting with custom domains, zero DevOps, and a developer dashboard. Under active development.
+              Managed hosting with custom domains, zero DevOps, and a developer dashboard. Not yet available — no SDK or
+              hosted backend ships today.
             </p>
             <a
               className="inline-flex items-center gap-1.5 rounded-lg border border-border px-4 py-2 font-semibold text-[13px] text-muted-foreground transition-colors hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"

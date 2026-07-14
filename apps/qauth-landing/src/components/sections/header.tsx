@@ -1,30 +1,49 @@
 import { IconBrandGithub } from '@tabler/icons-react'
+import { Link } from '@tanstack/react-router'
 import { motion, useReducedMotion } from 'framer-motion'
 import { getFadeInUpVariants } from '../../lib/motion-variants'
 
-interface NavLink {
+const NAV_LINK_CLASS =
+  'rounded font-medium text-[14px] text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background'
+
+interface HashNavLink {
+  type: 'hash'
   label: string
-  href: string
-  external?: boolean
+  hash: string
 }
 
+interface RouteNavLink {
+  type: 'route'
+  label: string
+  href: string
+}
+
+interface ExternalNavLink {
+  type: 'external'
+  label: string
+  href: string
+}
+
+type NavLink = HashNavLink | RouteNavLink | ExternalNavLink
+
 const navLinks: NavLink[] = [
-  { label: 'Features', href: '#features' },
-  { label: 'Quickstart', href: '#code' },
-  { label: 'Post-Quantum', href: '#pqc' },
-  { label: 'Releases', href: 'https://github.com/qauth-labs/qauth/releases', external: true },
-  { label: 'GitHub', href: 'https://github.com/qauth-labs/qauth', external: true },
+  { type: 'hash', label: 'Features', hash: 'features' },
+  { type: 'hash', label: 'Quickstart', hash: 'code' },
+  { type: 'hash', label: 'Post-Quantum', hash: 'pqc' },
+  { type: 'route', label: 'Roadmap', href: '/roadmap' },
+  { type: 'external', label: 'Releases', href: 'https://github.com/qauth-labs/qauth/releases' },
+  { type: 'external', label: 'GitHub', href: 'https://github.com/qauth-labs/qauth' },
 ]
 
 function QAuthLogo() {
   return (
-    <a
+    <Link
       aria-label="QAuth Labs home"
       className="rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-      href="#"
+      to="/"
     >
       <img alt="QAuth Labs" className="h-8 w-auto" height={32} src="/logo.svg" />
-    </a>
+    </Link>
   )
 }
 
@@ -43,16 +62,27 @@ export function Header() {
         <QAuthLogo />
 
         <nav aria-label="Main navigation" className="hidden items-center gap-8 md:flex">
-          {navLinks.map(({ label, href, external }) => (
-            <a
-              className="rounded font-medium text-[14px] text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-              href={href}
-              key={label}
-              {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-            >
-              {label}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            if (link.type === 'hash') {
+              return (
+                <Link className={NAV_LINK_CLASS} hash={link.hash} key={link.label} to="/">
+                  {link.label}
+                </Link>
+              )
+            }
+            if (link.type === 'route') {
+              return (
+                <Link className={NAV_LINK_CLASS} key={link.label} to={link.href}>
+                  {link.label}
+                </Link>
+              )
+            }
+            return (
+              <a className={NAV_LINK_CLASS} href={link.href} key={link.label} rel="noopener noreferrer" target="_blank">
+                {link.label}
+              </a>
+            )
+          })}
         </nav>
 
         <div className="flex items-center gap-3">

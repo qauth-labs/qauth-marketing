@@ -30,8 +30,8 @@ export function CTA() {
           className="mx-auto mb-10 max-w-[520px] text-[17px] text-muted-foreground leading-[1.7]"
           variants={variants}
         >
-          Stop maintaining auth. Build on verifiable credentials, identity wallets, and quantum-resistant cryptography —
-          from day one.
+          Stop maintaining auth. Self-host OAuth 2.1 for your app or your AI agents — audience-bound tokens,
+          on-behalf-of delegation, and a crypto-agile core, from day one.
         </motion.p>
 
         <motion.div className="flex flex-wrap justify-center gap-3.5" variants={variants}>
