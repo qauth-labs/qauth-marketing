@@ -1,3 +1,5 @@
+import { Link } from '@tanstack/react-router'
+
 const FOOTER_COLS = [
   {
     heading: 'Project',
@@ -30,13 +32,13 @@ const FOOTER_COLS = [
 
 function QAuthLogo() {
   return (
-    <a
+    <Link
       aria-label="QAuth Labs home"
       className="rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-      href="#"
+      to="/"
     >
       <img alt="QAuth Labs" className="h-16 w-auto" height={64} src="/logo.svg" />
-    </a>
+    </Link>
   )
 }
 
@@ -69,9 +71,9 @@ export function Footer() {
           <div className="flex flex-wrap gap-10 md:gap-16">
             {FOOTER_COLS.map(({ heading, links }) => (
               <div key={heading}>
-                <h4 className="mb-4 font-sans font-semibold text-[12px] text-muted-foreground uppercase tracking-[0.08em]">
+                <h3 className="mb-4 font-sans font-semibold text-[12px] text-muted-foreground uppercase tracking-[0.08em]">
                   {heading}
-                </h4>
+                </h3>
                 <nav aria-label={`${heading} links`} className="flex flex-col">
                   {links.map(({ label, href }) => (
                     <a

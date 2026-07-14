@@ -106,17 +106,18 @@ export function Hero() {
               </p>
               <br />
               <p>
-                <span className="text-[#c9a0dc]">import</span>
+                <span className="text-[var(--code-keyword)]">import</span>
                 {' { '}
-                <span className="text-[#d4a843]">QAuth</span>
+                <span className="text-[var(--code-entity)]">QAuth</span>
                 {' } '}
-                <span className="text-[#c9a0dc]">from</span>{' '}
+                <span className="text-[var(--code-keyword)]">from</span>{' '}
                 <span className="text-highlight">&apos;@qauth-labs/core&apos;</span>
               </p>
               <p>
-                <span className="text-[#c9a0dc]">const</span>
+                <span className="text-[var(--code-keyword)]">const</span>
                 {' auth = '}
-                <span className="text-[#c9a0dc]">new</span> <span className="text-[#d4a843]">QAuth</span>
+                <span className="text-[var(--code-keyword)]">new</span>{' '}
+                <span className="text-[var(--code-entity)]">QAuth</span>
                 {'({ '}
                 <span className="text-primary">domain</span>
                 {': '}

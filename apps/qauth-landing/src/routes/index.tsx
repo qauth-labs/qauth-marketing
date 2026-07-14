@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 
+import { Benefits } from '../components/sections/benefits'
 import { CTA } from '../components/sections/cta'
 import { Deploy } from '../components/sections/deploy'
 import { Features } from '../components/sections/features'
@@ -9,6 +10,7 @@ import { Hero } from '../components/sections/hero'
 import { Integration } from '../components/sections/integration'
 import { PQC } from '../components/sections/pqc'
 import { StandardsBar } from '../components/sections/standards-bar'
+import { Waitlist } from '../components/sections/waitlist'
 
 export const Route = createFileRoute('/')({ component: LandingPage })
 
@@ -16,17 +18,19 @@ function LandingPage() {
   return (
     <>
       <div aria-hidden className="grid-lines" />
+      <Header />
       <main className="min-h-screen overflow-x-hidden bg-background text-foreground" id="main-content">
-        <Header />
         <Hero />
         <StandardsBar />
         <Features />
         <Integration />
         <PQC />
         <Deploy />
+        <Benefits />
+        <Waitlist />
         <CTA />
-        <Footer />
       </main>
+      <Footer />
     </>
   )
 }

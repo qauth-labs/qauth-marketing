@@ -5,25 +5,6 @@ export const SITE = {
   targetRelease: 'Q2 2026',
 } as const
 
-export const CORE_FEATURES = [
-  {
-    title: 'Post-Quantum Security',
-    description: 'Future-proof cryptography implementing NIST-standardized algorithms like CRYSTALS-Kyber.',
-  },
-  {
-    title: 'Headless-First',
-    description: 'Complete API control. Build your own UI, we handle the complex security primitives.',
-  },
-  {
-    title: 'Dev Experience',
-    description: 'Typed SDKs, comprehensive docs, and local testing with dev mode that just works.',
-  },
-  {
-    title: 'OAuth 2.1 & OIDC',
-    description: 'Fully compliant with modern standards. Easy integration, enterprise-ready.',
-  },
-] as const
-
 export type RoadmapStatus = 'completed' | 'in-progress' | 'planned'
 
 export const ROADMAP_MILESTONES: Array<{

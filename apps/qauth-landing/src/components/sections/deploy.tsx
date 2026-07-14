@@ -31,7 +31,7 @@ export function Deploy() {
         >
           {/* Self-hosted — available now */}
           <motion.div
-            className="group rounded-2xl border border-highlight/40 bg-card p-8 transition-all hover:border-highlight/60 hover:shadow-[0_0_40px_-8px_oklch(0.75_0.15_195_/_0.15)]"
+            className="group rounded-2xl border border-highlight/40 bg-card p-8 transition-all hover:border-highlight/60 hover:shadow-[0_0_40px_-8px_var(--glow-highlight)]"
             variants={variants}
           >
             <span className="mb-5 inline-flex items-center gap-1.5 rounded-full border border-highlight/20 bg-highlight/12 px-3.5 py-1.5 font-mono font-semibold text-[12px] text-highlight">

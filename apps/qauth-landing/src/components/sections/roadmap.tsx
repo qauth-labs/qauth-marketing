@@ -11,12 +11,22 @@ const statusLabels: Record<string, string> = {
   planned: 'Planned',
 }
 
-export function Roadmap() {
+interface RoadmapProps {
+  /** Set when this section is the page's own title (no Hero-equivalent above it), e.g. on /roadmap. */
+  asPageTitle?: boolean
+}
+
+export function Roadmap({ asPageTitle = false }: RoadmapProps) {
   const reduceMotion = useReducedMotion()
   const variants = getFadeInUpVariants(!!reduceMotion)
+  const TitleTag = asPageTitle ? 'h1' : 'h2'
+  const MilestoneTitleTag = asPageTitle ? 'h2' : 'h3'
 
   return (
-    <section className="scroll-mt-24 py-24 md:py-32" id="roadmap">
+    <section
+      className={asPageTitle ? 'scroll-mt-24 pt-44 pb-24 md:pt-56 md:pb-32' : 'scroll-mt-24 py-24 md:py-32'}
+      id="roadmap"
+    >
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <motion.div
           animate="animate"
@@ -25,7 +35,9 @@ export function Roadmap() {
           variants={variants}
         >
           <div>
-            <h2 className="font-bold text-3xl text-foreground md:text-4xl">Development Status</h2>
+            <TitleTag className="font-display font-normal text-[clamp(32px,4vw,48px)] leading-[1.15] tracking-[-0.02em]">
+              Development Status
+            </TitleTag>
             <p className="mt-4 text-muted-foreground text-sm">Building a truly quantum-safe identity.</p>
           </div>
           <span className="rounded-lg border border-border bg-card px-4 py-2 text-muted-foreground text-sm">
@@ -46,7 +58,7 @@ export function Roadmap() {
               variants={variants}
             >
               <div className="flex flex-col gap-1">
-                <h3 className="font-semibold text-foreground">{milestone.title}</h3>
+                <MilestoneTitleTag className="font-semibold text-foreground">{milestone.title}</MilestoneTitleTag>
                 <p className="text-muted-foreground text-sm">{milestone.description}</p>
               </div>
               <div className="flex flex-wrap items-center gap-3">

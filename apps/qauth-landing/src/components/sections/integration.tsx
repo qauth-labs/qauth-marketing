@@ -53,7 +53,7 @@ export function Integration() {
                     {num}
                   </span>
                   <div>
-                    <h4 className="mb-1 font-semibold text-[14px]">{title}</h4>
+                    <h3 className="mb-1 font-sans font-semibold text-[14px]">{title}</h3>
                     <p className="text-[13px] text-muted-foreground leading-[1.5]">{desc}</p>
                   </div>
                 </div>
@@ -77,18 +77,19 @@ export function Integration() {
           <motion.div animate="animate" initial="initial" style={{ transitionDelay: '0.15s' }} variants={variants}>
             <Terminal title="app.ts">
               <p>
-                <span className="text-[#c9a0dc]">import</span>
+                <span className="text-[var(--code-keyword)]">import</span>
                 {' { '}
-                <span className="text-[#d4a843]">QAuth</span>
+                <span className="text-[var(--code-entity)]">QAuth</span>
                 {' } '}
-                <span className="text-[#c9a0dc]">from</span>{' '}
+                <span className="text-[var(--code-keyword)]">from</span>{' '}
                 <span className="text-highlight">&apos;@qauth-labs/core&apos;</span>
               </p>
               <br />
               <p>
-                <span className="text-[#c9a0dc]">const</span>
+                <span className="text-[var(--code-keyword)]">const</span>
                 {' auth = '}
-                <span className="text-[#c9a0dc]">new</span> <span className="text-[#d4a843]">QAuth</span>
+                <span className="text-[var(--code-keyword)]">new</span>{' '}
+                <span className="text-[var(--code-entity)]">QAuth</span>
                 {'({'}
               </p>
               <p>
@@ -111,11 +112,11 @@ export function Integration() {
                 <span className="text-muted-foreground/70">{'// Passkey — passwordless, phishing-resistant'}</span>
               </p>
               <p>
-                <span className="text-[#c9a0dc]">const</span>
+                <span className="text-[var(--code-keyword)]">const</span>
                 {' { user, session } = '}
-                <span className="text-[#c9a0dc]">await</span>
+                <span className="text-[var(--code-keyword)]">await</span>
                 {' auth.'}
-                <span className="text-[#d4a843]">signInWithPasskey</span>
+                <span className="text-[var(--code-entity)]">signInWithPasskey</span>
                 {'()'}
               </p>
               <br />
@@ -125,11 +126,11 @@ export function Integration() {
                 </span>
               </p>
               <p>
-                <span className="text-[#c9a0dc]">const</span>
+                <span className="text-[var(--code-keyword)]">const</span>
                 {' { user, session } = '}
-                <span className="text-[#c9a0dc]">await</span>
+                <span className="text-[var(--code-keyword)]">await</span>
                 {' auth.'}
-                <span className="text-[#d4a843]">federateFrom</span>
+                <span className="text-[var(--code-entity)]">federateFrom</span>
                 {'({'}
               </p>
               <p>
@@ -145,11 +146,11 @@ export function Integration() {
                 <span className="text-muted-foreground/70">{'// EUDI Wallet — OID4VP credential presentation'}</span>
               </p>
               <p>
-                <span className="text-[#c9a0dc]">const</span>
+                <span className="text-[var(--code-keyword)]">const</span>
                 {' { user, session } = '}
-                <span className="text-[#c9a0dc]">await</span>
+                <span className="text-[var(--code-keyword)]">await</span>
                 {' auth.'}
-                <span className="text-[#d4a843]">presentCredential</span>
+                <span className="text-[var(--code-entity)]">presentCredential</span>
                 {'({'}
               </p>
               <p>
@@ -168,11 +169,11 @@ export function Integration() {
                 <span className="text-muted-foreground/70">{'// email/password — available for legacy migration'}</span>
               </p>
               <p>
-                <span className="text-[#c9a0dc]">const</span>
+                <span className="text-[var(--code-keyword)]">const</span>
                 {' { user, session } = '}
-                <span className="text-[#c9a0dc]">await</span>
+                <span className="text-[var(--code-keyword)]">await</span>
                 {' auth.'}
-                <span className="text-[#d4a843]">signInWithPassword</span>
+                <span className="text-[var(--code-entity)]">signInWithPassword</span>
                 {'({'}
               </p>
               <p>
