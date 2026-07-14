@@ -1,0 +1,27 @@
+{
+  "projectId": "f60be6e9-ace8-4d7b-b3bf-36f6ccea5b08",
+  "pkg": "@qauth/ui",
+  "shape": "package",
+  "readmeHeader": ".design-sync/conventions.md",
+  "entry": "libs/ui/src/index.ts",
+  "cssEntry": ".ds-cache/compiled-tailwind.css",
+  "extraFonts": [
+    "../../apps/qauth-landing/node_modules/@fontsource-variable/dm-sans/index.css",
+    "../../apps/qauth-landing/node_modules/@fontsource/instrument-serif/400.css",
+    "../../apps/qauth-landing/node_modules/@fontsource/instrument-serif/400-italic.css",
+    "../../apps/qauth-landing/node_modules/@fontsource-variable/jetbrains-mono/index.css"
+  ],
+  "overrides": {
+    "Dialog": { "cardMode": "single", "primaryStory": "CreateApiKey", "viewport": "680x420" },
+    "AlertDialog": { "cardMode": "single", "primaryStory": "RevokeAccess", "viewport": "680x380" },
+    "Sheet": { "cardMode": "single", "primaryStory": "MobileNav", "viewport": "680x480" },
+    "Popover": { "cardMode": "single", "primaryStory": "PricingFeature", "viewport": "420x280" },
+    "Tooltip": { "cardMode": "single", "primaryStory": "OnIconButton", "viewport": "360x150" },
+    "DropdownMenu": { "cardMode": "single", "primaryStory": "UserMenu", "viewport": "480x320" },
+    "Select": { "cardMode": "single", "primaryStory": "Open", "viewport": "480x420" },
+    "Alert": { "cardMode": "column" },
+    "InputGroup": { "cardMode": "column" },
+    "Skeleton": { "cardMode": "column" },
+    "Switch": { "cardMode": "column" }
+  }
+}
