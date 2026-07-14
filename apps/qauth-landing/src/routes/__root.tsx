@@ -15,12 +15,12 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'QAuth - Post-Quantum Ready Authentication',
+        title: 'QAuth — Open-Source OAuth 2.1 for the Agent Era',
       },
       {
         name: 'description',
         content:
-          'The headless-first identity platform built for quantum-resistant security. OAuth 2.1 compliant, developer-friendly, open source.',
+          'Self-hosted OAuth 2.1 for your apps, APIs, and AI agents. On-behalf-of delegation, MCP support, and a crypto-agile core built for post-quantum security.',
       },
     ],
     links: [

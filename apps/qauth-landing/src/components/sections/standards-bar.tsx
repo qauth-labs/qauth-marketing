@@ -1,13 +1,4 @@
-const STANDARDS = [
-  'OAuth 2.1',
-  'OIDC 1.0',
-  'PKCE',
-  'OID4VP',
-  'SIOPv2',
-  'SD-JWT VC',
-  'NIST FIPS 204',
-  'W3C DID',
-] as const
+const STANDARDS = ['OAuth 2.1', 'OIDC 1.0', 'PKCE', 'RFC 8693', 'RFC 9728', 'MCP'] as const
 
 export function StandardsBar() {
   return (

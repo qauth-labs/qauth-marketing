@@ -29,11 +29,11 @@ export function Hero() {
           variants={fadeVariants}
         >
           <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1.5 font-mono font-semibold text-[12px] text-primary tracking-wide">
-            OAuth 2.1 · MCP Authorization
+            OAuth 2.1 · Agent-Native Authorization
           </span>
           <span className="inline-flex items-center gap-1.5 rounded-full border border-highlight/20 bg-highlight/10 px-3.5 py-1.5 font-mono font-semibold text-[12px] text-highlight tracking-wide">
             <IconShield aria-hidden className="size-3" />
-            Post-Quantum Ready · Apache 2.0
+            Crypto-Agile · Apache 2.0
           </span>
         </motion.div>
 
@@ -45,7 +45,7 @@ export function Hero() {
         >
           The OAuth 2.1 server
           <br />
-          for <em className="text-highlight italic">MCP</em> and AI agents
+          for the <em className="text-highlight italic">agent era</em>
         </motion.h1>
 
         {/* Subheading */}
@@ -54,9 +54,9 @@ export function Hero() {
           transition={transition}
           variants={fadeVariants}
         >
-          Open-source, self-hostable authorization for MCP servers and AI agents — validated end-to-end with Claude
-          Code. On-behalf-of agent delegation, audience-bound tokens, and a crypto-agile core built for the post-quantum
-          era.
+          Open-source, self-hostable authorization for your apps, your APIs, and the AI agents acting on behalf of your
+          users. On-behalf-of delegation, audience-bound tokens, MCP support validated end-to-end with Claude Code — on
+          a crypto-agile core built for the post-quantum era.
         </motion.p>
 
         {/* Actions */}
@@ -104,14 +104,18 @@ export function Hero() {
               </p>
               <br />
               <p>
-                <span className="text-muted-foreground/70">#Issue a token for your agent</span>
+                <span className="text-muted-foreground/70"># Delegate to an agent — on behalf of a user</span>
               </p>
               <p>
                 <span className="text-primary">❯ </span>
                 <span className="text-muted-foreground">curl -X POST </span>
                 <span className="text-highlight">http://localhost:3000/oauth/token </span>
                 <span className="text-primary">-d </span>
-                <span className="text-highlight">grant_type=client_credentials</span>
+                <span className="text-highlight">grant_type=urn:ietf:params:oauth:grant-type:token-exchange </span>
+                <span className="text-primary">-d </span>
+                <span className="text-highlight">subject_token=&lt;user_token&gt; </span>
+                <span className="text-primary">-d </span>
+                <span className="text-highlight">audience=https://api.yourapp.com</span>
                 <span
                   aria-hidden
                   className="ml-0.5 inline-block h-[16px] w-[8px] translate-y-[2px] animate-[blink_1s_steps(1)_infinite] bg-highlight"

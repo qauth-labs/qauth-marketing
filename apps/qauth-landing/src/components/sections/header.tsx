@@ -28,6 +28,8 @@ type NavLink = HashNavLink | RouteNavLink | ExternalNavLink
 
 const navLinks: NavLink[] = [
   { type: 'hash', label: 'Features', hash: 'features' },
+  { type: 'hash', label: 'Core', hash: 'oauth-core' },
+  { type: 'hash', label: 'Agents', hash: 'agents' },
   { type: 'hash', label: 'Quickstart', hash: 'code' },
   { type: 'hash', label: 'Post-Quantum', hash: 'pqc' },
   { type: 'route', label: 'Roadmap', href: '/roadmap' },

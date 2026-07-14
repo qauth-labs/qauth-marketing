@@ -16,7 +16,7 @@ const FOOTER_COLS = [
       { label: 'Security Policy', href: 'https://github.com/qauth-labs/qauth/security/policy' },
       { label: 'Report Vulnerability', href: 'https://github.com/qauth-labs/qauth/security/advisories/new' },
       { label: 'NIST FIPS 204', href: 'https://csrc.nist.gov/pubs/fips/204/final' },
-      { label: 'CRYSTALS-Kyber', href: 'https://pq-crystals.org/kyber/' },
+      { label: 'RFC 8032 (EdDSA)', href: 'https://www.rfc-editor.org/rfc/rfc8032' },
     ],
   },
   {
@@ -51,7 +51,7 @@ export function Footer() {
           <div>
             <QAuthLogo />
             <p className="mt-3 max-w-[300px] text-[13px] text-muted-foreground leading-[1.6]">
-              Open-source identity infrastructure for the post-quantum era. A project of{' '}
+              Open-source OAuth 2.1 authorization for the agent era. A project of{' '}
               <a
                 className="text-foreground transition-colors hover:text-primary"
                 href="https://lylia.ee"
