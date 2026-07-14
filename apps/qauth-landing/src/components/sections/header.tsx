@@ -86,6 +86,11 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
+          {/* Mobile-only Roadmap link: the main nav is hidden below md, so this
+              keeps /roadmap reachable on phones. Text-only to avoid header overflow. */}
+          <Link className={`${NAV_LINK_CLASS} text-foreground md:hidden`} to="/roadmap">
+            Roadmap
+          </Link>
           <a
             className="hidden rounded-lg border border-border px-4 py-2 font-semibold text-[14px] text-foreground transition-colors hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:inline-flex"
             href="https://github.com/qauth-labs/qauth/releases"
