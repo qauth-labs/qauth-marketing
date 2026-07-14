@@ -1,8 +1,32 @@
-import { IconCode, IconCube, IconId, IconNetwork, IconPackage, IconShield } from '@tabler/icons-react'
+import { IconCube, IconId, IconKey, IconNetwork, IconPlug, IconShield } from '@tabler/icons-react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { getFadeInUpVariants, staggerContainer } from '../../lib/motion-variants'
 
 const FEATURES = [
+  {
+    accent: 'terra',
+    icon: IconNetwork,
+    title: 'Agent-Native Authorization',
+    description:
+      'RFC 8693 on-behalf-of delegation, ReadOnly / Admin / Exec scope modes, and step-up authentication before dangerous operations — for any agent calling any API, not just MCP. Audience-bound tokens keep delegated access scoped to exactly what it should touch.',
+    tag: 'RFC 8693 · Step-Up',
+  },
+  {
+    accent: 'cyan',
+    icon: IconPlug,
+    title: 'MCP Out of the Box',
+    description:
+      'RFC 9728 protected-resource metadata and dynamic client registration so MCP servers just work. Drop in @qauth-labs/mcp-guard and you have an authorization layer validated end-to-end with Claude Code.',
+    tag: 'RFC 9728 · mcp-guard',
+  },
+  {
+    accent: 'terra',
+    icon: IconKey,
+    title: 'OAuth 2.1 & OIDC Core',
+    description:
+      'Humans and services authenticate on the same server. Authorization code flow with PKCE, client_credentials for machine-to-machine, refresh token rotation, discovery, and JWKS — all standards-compliant, no shortcuts.',
+    tag: 'OAuth 2.1 · OIDC 1.0',
+  },
   {
     accent: 'terra',
     icon: IconShield,
@@ -14,34 +38,10 @@ const FEATURES = [
   {
     accent: 'cyan',
     icon: IconCube,
-    title: 'Headless-First',
+    title: 'Headless & Self-Hosted',
     description:
-      'A full REST API with no mandatory UI. Call the OAuth 2.1 and OIDC endpoints directly from any framework and build your own branded login experience — no bundled UI to fight.',
-    tag: 'OAuth 2.1 · OIDC 1.0',
-  },
-  {
-    accent: 'terra',
-    icon: IconNetwork,
-    title: 'MCP & Agent Authorization',
-    description:
-      'The self-hostable OAuth 2.1 authorization server built for MCP servers and AI agents. RFC 8693 on-behalf-of delegation, ReadOnly / Admin / Exec scope modes, and step-up authentication before dangerous operations — validated end-to-end with Claude Code.',
-    tag: 'RFC 8693 · mcp-guard',
-  },
-  {
-    accent: 'cyan',
-    icon: IconCode,
-    title: 'TypeScript-Native',
-    description:
-      'A single Fastify and TypeScript codebase — no native toolchain required to run it. Rust and napi-rs bindings for performance-critical signing are on the long-term roadmap.',
-    tag: 'Fastify · jose',
-  },
-  {
-    accent: 'terra',
-    icon: IconPackage,
-    title: 'Self-Hostable',
-    description:
-      'One Docker command. Your infrastructure, your data, your compliance. No telemetry, no vendor lock-in, Apache 2.0 licensed.',
-    tag: 'Docker Compose',
+      'A full REST API with no mandatory UI — build your own branded login experience. One Docker Compose command gets you running on your own infrastructure: a single TypeScript/Fastify codebase, no telemetry, Apache 2.0 licensed.',
+    tag: 'REST API · Docker · Apache 2.0',
   },
   {
     accent: 'cyan',
@@ -69,8 +69,8 @@ export function Features() {
             Built for what comes next
           </h2>
           <p className="mx-auto max-w-[560px] text-[17px] text-muted-foreground leading-[1.7]">
-            Everything you need to ship secure authentication — without locking yourself into a vendor or a dying
-            standard.
+            Everything you need to ship secure authentication — for your users, your services, and the agents acting on
+            their behalf.
           </p>
         </motion.div>
 

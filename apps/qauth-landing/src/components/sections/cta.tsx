@@ -30,7 +30,7 @@ export function CTA() {
           className="mx-auto mb-10 max-w-[520px] text-[17px] text-muted-foreground leading-[1.7]"
           variants={variants}
         >
-          Stop maintaining auth. Self-host OAuth 2.1 for your app or your AI agents — audience-bound tokens,
+          Stop maintaining auth. Self-host OAuth 2.1 for humans, services, and AI agents — audience-bound tokens,
           on-behalf-of delegation, and a crypto-agile core, from day one.
         </motion.p>
 

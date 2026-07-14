@@ -11,13 +11,13 @@ const STEPS = [
   },
   {
     num: '2',
-    title: 'Protect your MCP server',
-    desc: 'Register @qauth-labs/mcp-guard on your resource server. It serves RFC 9728 metadata and returns a 401 challenge to unauthenticated requests.',
+    title: 'Protect any resource server',
+    desc: 'Register @qauth-labs/mcp-guard for MCP servers, or verify bearer tokens against JWKS directly for a plain REST API. Same audience-bound tokens either way.',
   },
   {
     num: '3',
-    title: 'Let agents authenticate',
-    desc: 'MCP clients like Claude Code discover your authorization server, register dynamically, and complete authorization_code with PKCE for an audience-bound token.',
+    title: 'Let any client authenticate',
+    desc: 'MCP clients like Claude Code discover your authorization server, register dynamically, and complete authorization_code with PKCE. Services skip the redirect and use client_credentials instead.',
   },
 ] as const
 
@@ -41,8 +41,9 @@ export function Integration() {
                 of your way
               </h2>
               <p className="mb-8 max-w-[440px] text-[17px] text-muted-foreground leading-[1.7]">
-                Self-host QAuth with Docker Compose, then protect your MCP servers with standards-based OAuth 2.1 — RFC
-                9728 discovery, dynamic client registration, and PKCE. No proprietary SDK required.
+                Self-host QAuth with Docker Compose, then protect your resource servers — MCP or plain REST — with
+                standards-based OAuth 2.1: RFC 9728 discovery, dynamic client registration, and PKCE. No proprietary SDK
+                required.
               </p>
             </motion.div>
 
@@ -193,6 +194,25 @@ export function Integration() {
                 </span>
               </p>
             </Terminal>
+
+            <div className="mt-6">
+              <Terminal compact title="client-credentials.sh">
+                <p>
+                  <span className="text-muted-foreground/70">
+                    # Plain OAuth 2.1 — no MCP, no agent, just your service
+                  </span>
+                </p>
+                <p>
+                  <span className="text-primary">❯ </span>
+                  <span className="text-muted-foreground">curl -X POST </span>
+                  <span className="text-highlight">https://auth.yourapp.com/oauth/token </span>
+                  <span className="text-primary">-d </span>
+                  <span className="text-highlight">grant_type=client_credentials </span>
+                  <span className="text-primary">-d </span>
+                  <span className="text-highlight">scope=documents:read</span>
+                </p>
+              </Terminal>
+            </div>
           </motion.div>
         </div>
       </div>

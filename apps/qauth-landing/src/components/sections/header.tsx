@@ -28,11 +28,11 @@ type NavLink = HashNavLink | RouteNavLink | ExternalNavLink
 
 const navLinks: NavLink[] = [
   { type: 'hash', label: 'Features', hash: 'features' },
+  { type: 'hash', label: 'Core', hash: 'oauth-core' },
+  { type: 'hash', label: 'Agents', hash: 'agents' },
   { type: 'hash', label: 'Quickstart', hash: 'code' },
   { type: 'hash', label: 'Post-Quantum', hash: 'pqc' },
   { type: 'route', label: 'Roadmap', href: '/roadmap' },
-  { type: 'external', label: 'Releases', href: 'https://github.com/qauth-labs/qauth/releases' },
-  { type: 'external', label: 'GitHub', href: 'https://github.com/qauth-labs/qauth' },
 ]
 
 function QAuthLogo() {
@@ -42,7 +42,7 @@ function QAuthLogo() {
       className="rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       to="/"
     >
-      <img alt="QAuth Labs" className="h-8 w-auto" height={32} src="/logo.svg" />
+      <img alt="QAuth Labs" className="h-8 w-auto" height={32} src="/logo.svg" width={83} />
     </Link>
   )
 }

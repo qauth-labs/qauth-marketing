@@ -58,7 +58,7 @@ export const BENEFITS = [
   {
     title: 'Lightweight',
     description:
-      'Unlike bloated identity platforms, self-host QAuth with a single docker compose up, or drop @qauth-labs/mcp-guard into your MCP resource server for token validation.',
+      'Unlike bloated identity platforms, self-host QAuth with a single docker compose up. Protecting an MCP server? Drop in @qauth-labs/mcp-guard — one integration path among several.',
   },
   {
     title: 'Fully Customizable',
