@@ -27,7 +27,7 @@ export function Roadmap({ asPageTitle = false }: RoadmapProps) {
       className={asPageTitle ? 'scroll-mt-24 pt-44 pb-24 md:pt-56 md:pb-32' : 'scroll-mt-24 py-24 md:py-32'}
       id="roadmap"
     >
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
+      <div className="mx-auto max-w-[1200px] px-6">
         <motion.div
           animate="animate"
           className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between"
@@ -64,11 +64,11 @@ export function Roadmap({ asPageTitle = false }: RoadmapProps) {
               key={milestone.title}
               variants={variants}
             >
-              <div className="flex flex-col gap-1">
+              <div className="flex min-w-0 flex-1 flex-col gap-1">
                 <MilestoneTitleTag className="font-semibold text-foreground">{milestone.title}</MilestoneTitleTag>
                 <p className="text-muted-foreground text-sm">{milestone.description}</p>
               </div>
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="flex shrink-0 flex-wrap items-center gap-3">
                 <StatusBadge label={statusLabels[milestone.status]} status={milestone.status} />
                 {milestone.viewCodeHref != null && (
                   <Button asChild size="sm" variant="outline">
