@@ -11,6 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RoadmapRouteImport } from './routes/roadmap'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TeamTahaRouteImport } from './routes/team.taha'
+import { Route as TeamTahaCardRouteImport } from './routes/team.taha_.card'
 
 const RoadmapRoute = RoadmapRouteImport.update({
   id: '/roadmap',
@@ -22,31 +24,49 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TeamTahaRoute = TeamTahaRouteImport.update({
+  id: '/team/taha',
+  path: '/team/taha',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamTahaCardRoute = TeamTahaCardRouteImport.update({
+  id: '/team/taha_/card',
+  path: '/team/taha/card',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/roadmap': typeof RoadmapRoute
+  '/team/taha': typeof TeamTahaRoute
+  '/team/taha/card': typeof TeamTahaCardRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/roadmap': typeof RoadmapRoute
+  '/team/taha': typeof TeamTahaRoute
+  '/team/taha/card': typeof TeamTahaCardRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/roadmap': typeof RoadmapRoute
+  '/team/taha': typeof TeamTahaRoute
+  '/team/taha_/card': typeof TeamTahaCardRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/roadmap'
+  fullPaths: '/' | '/roadmap' | '/team/taha' | '/team/taha/card'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/roadmap'
-  id: '__root__' | '/' | '/roadmap'
+  to: '/' | '/roadmap' | '/team/taha' | '/team/taha/card'
+  id: '__root__' | '/' | '/roadmap' | '/team/taha' | '/team/taha_/card'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   RoadmapRoute: typeof RoadmapRoute
+  TeamTahaRoute: typeof TeamTahaRoute
+  TeamTahaCardRoute: typeof TeamTahaCardRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +85,28 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/team/taha': {
+      id: '/team/taha'
+      path: '/team/taha'
+      fullPath: '/team/taha'
+      preLoaderRoute: typeof TeamTahaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team/taha_/card': {
+      id: '/team/taha_/card'
+      path: '/team/taha/card'
+      fullPath: '/team/taha/card'
+      preLoaderRoute: typeof TeamTahaCardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   RoadmapRoute: RoadmapRoute,
+  TeamTahaRoute: TeamTahaRoute,
+  TeamTahaCardRoute: TeamTahaCardRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
