@@ -27,7 +27,7 @@ function TahaCardPage() {
         <p className="mt-3 text-[15px] text-muted-foreground leading-[1.7]">
           QAuth 開発者
           <br />
-          アイデンティティ &amp; Web エンジニア · 横浜
+          アイデンティティ(IAM)&amp; AI エンジニア · 横浜
         </p>
 
         {/* Contact */}
