@@ -23,8 +23,8 @@ function TahaCardPage() {
         {/* Identity */}
         <img alt="QAuth" className="mx-auto h-10 w-auto" src="/logo.svg" />
         <h1 className="mt-6 font-semibold text-3xl tracking-tight">アヤン・ムハンマド・タハ</h1>
-        <p className="mt-1 text-[13px] text-muted-foreground">Muhammed Taha Ayan</p>
-        <p className="mt-3 text-[15px] text-muted-foreground leading-[1.7]">
+        <p className="mt-1 text-[13px] text-[oklch(0.72_0.008_90)]">Muhammed Taha Ayan</p>
+        <p className="mt-3 text-[15px] text-[oklch(0.75_0.008_90)] leading-[1.7]">
           QAuth 開発者
           <br />
           アイデンティティ(IAM)&amp; AI エンジニア · 横浜
@@ -32,21 +32,21 @@ function TahaCardPage() {
 
         {/* Contact */}
         <div className="mt-5 flex flex-col gap-1 text-[14px]">
-          <a className="text-foreground transition-colors hover:text-primary" href="mailto:taha@qauth.dev">
+          <a className="text-foreground hover:underline" href="mailto:taha@qauth.dev">
             taha@qauth.dev
           </a>
-          <a className="text-foreground transition-colors hover:text-primary" href="tel:+818095243454">
+          <a className="text-foreground hover:underline" href="tel:+818095243454">
             080-9524-3454
           </a>
         </div>
 
         {/* Visa status */}
         <div className="mt-7 rounded-lg border border-primary/40 bg-primary/10 px-5 py-4">
-          <p className="font-sans font-semibold text-[11px] text-muted-foreground uppercase tracking-[0.08em]">
+          <p className="font-sans font-semibold text-[12px] text-[oklch(0.72_0.008_90)] uppercase tracking-[0.08em]">
             在留資格
           </p>
           <p className="mt-2 font-semibold text-[17px] leading-[1.6]">家族滞在ビザ保持者・スポンサー募集中</p>
-          <p className="mt-1 text-[13px] text-muted-foreground leading-[1.7]">
+          <p className="mt-1 text-[13px] text-[oklch(0.72_0.008_90)] leading-[1.7]">
             資格外活動許可 取得済み(週28時間まで就労可)。
             <br />
             フルタイム雇用に向けて、技術・人文知識・国際業務ビザ
@@ -59,7 +59,7 @@ function TahaCardPage() {
         <div className="mx-auto mt-7 w-fit rounded-xl bg-white p-3">
           <img alt="qauth.dev/team/taha の QR コード" className="h-52 w-52" src="/team-taha-qr.svg" />
         </div>
-        <p className="mt-3 text-[13px] text-muted-foreground leading-[1.7]">
+        <p className="mt-3 text-[13px] text-[oklch(0.72_0.008_90)] leading-[1.7]">
           プロフィール・ポートフォリオ・各種リンクはこちら
           <br />
           <span className="text-foreground">qauth.dev/team/taha</span>

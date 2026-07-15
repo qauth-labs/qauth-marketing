@@ -133,15 +133,15 @@ function EntryCard({ entry }: { entry: Entry }) {
     <>
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h3 className="font-semibold text-lg">{title}</h3>
-        <span className="text-[12px] text-muted-foreground">
+        <span className="text-[12px] text-[oklch(0.72_0.008_90)]">
           {role} · {period}
         </span>
       </div>
       <ul className="mt-3 flex list-disc flex-col gap-2 pl-4">
         {bullets.map(({ ja, en }) => (
           <li key={ja}>
-            <p className="text-[14px] text-muted-foreground leading-[1.7]">{ja}</p>
-            <p className="mt-0.5 text-[12.5px] text-muted-foreground/60 leading-[1.6]">{en}</p>
+            <p className="text-[14px] text-[oklch(0.75_0.008_90)] leading-[1.7]">{ja}</p>
+            <p className="mt-0.5 text-[13px] text-[oklch(0.68_0.008_90)] leading-[1.6]">{en}</p>
           </li>
         ))}
       </ul>
@@ -166,10 +166,10 @@ function TahaPage() {
       <main className="min-h-screen overflow-x-hidden bg-background text-foreground" id="main-content">
         <section className="mx-auto max-w-[800px] px-6 pt-32 pb-20">
           {/* Identity */}
-          <p className="font-sans font-semibold text-[12px] text-muted-foreground uppercase tracking-[0.08em]">Team</p>
+          <p className="font-sans font-semibold text-[12px] text-[oklch(0.72_0.008_90)] uppercase tracking-[0.08em]">Team</p>
           <h1 className="mt-3 font-semibold text-4xl tracking-tight">Muhammed Taha Ayan</h1>
-          <p className="mt-1 text-muted-foreground text-xl">アヤン・ムハンマド・タハ</p>
-          <p className="mt-4 text-[15px] text-muted-foreground leading-[1.7]">
+          <p className="mt-1 text-[oklch(0.75_0.008_90)] text-xl">アヤン・ムハンマド・タハ</p>
+          <p className="mt-4 text-[15px] text-[oklch(0.75_0.008_90)] leading-[1.7]">
             QAuth 開発者 — アイデンティティ(IAM)&amp; AI エンジニア · 横浜(日本)
             <br />
             Creator of QAuth — Identity (IAM) &amp; AI Engineer · Yokohama, Japan
@@ -184,7 +184,7 @@ function TahaPage() {
                 key={label}
                 {...(href.startsWith('https') ? { rel: 'noopener noreferrer', target: '_blank' } : {})}
               >
-                <span className="block font-sans font-semibold text-[11px] text-muted-foreground uppercase tracking-[0.08em]">
+                <span className="block font-sans font-semibold text-[12px] text-[oklch(0.72_0.008_90)] uppercase tracking-[0.08em]">
                   {label}
                 </span>
                 <span className="mt-1 block text-[14px] text-foreground">{value}</span>
@@ -194,14 +194,14 @@ function TahaPage() {
 
           {/* About */}
           <h2 className="mt-14 font-semibold text-2xl tracking-tight">自己紹介 / About</h2>
-          <p className="mt-4 text-[15px] text-muted-foreground leading-[1.8]">
+          <p className="mt-4 text-[15px] text-[oklch(0.75_0.008_90)] leading-[1.8]">
             トルコ出身のソフトウェアエンジニア(経験10年以上)。OAuth 2.1 / OpenID Connect
             をプロトコルレベルから実装するアイデンティティ基盤(IAM)と、エージェント型 AI システム・AI
             ネイティブ開発ワークフローを専門としています。オープンソース認可サーバー QAuth の開発者、OpenID Foundation
             コントリビューター。現在は横浜を拠点に活動中。技術・人文知識・国際業務ビザまたは高度専門職(HSP)ビザの
             スポンサーとなっていただける企業を探しています — お気軽にご連絡ください。
           </p>
-          <p className="mt-3 text-[14px] text-muted-foreground/80 leading-[1.8]">
+          <p className="mt-3 text-[14px] text-[oklch(0.68_0.008_90)] leading-[1.8]">
             Software engineer from Türkiye (10+ years), specialized in identity infrastructure built from the protocol
             up (OAuth 2.1 / OpenID Connect) and in agentic AI systems and AI-native development workflows. Creator of
             the open-source authorization server QAuth; OpenID Foundation contributor. Based in Yokohama. Looking for
