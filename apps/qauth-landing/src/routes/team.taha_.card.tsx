@@ -45,11 +45,13 @@ function TahaCardPage() {
           <p className="font-sans font-semibold text-[11px] text-muted-foreground uppercase tracking-[0.08em]">
             在留資格
           </p>
-          <p className="mt-2 font-semibold text-[17px] leading-[1.6]">無職・家族滞在ビザ保持者</p>
+          <p className="mt-2 font-semibold text-[17px] leading-[1.6]">家族滞在ビザ保持者・スポンサー募集中</p>
           <p className="mt-1 text-[13px] text-muted-foreground leading-[1.7]">
-            資格外活動許可は申請中です。
+            資格外活動許可 取得済み(週28時間まで就労可)。
             <br />
-            日本での就労機会を探しています。
+            フルタイム雇用に向けて、技術・人文知識・国際業務ビザ
+            <br />
+            または高度専門職(HSP)ビザのスポンサーを探しています。
           </p>
         </div>
 

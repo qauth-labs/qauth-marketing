@@ -92,12 +92,14 @@ function TahaPage() {
             トルコ出身のソフトウェアエンジニア。OAuth 2.1 / OpenID Connect
             を中心としたアイデンティティ基盤と、React を中心とした Web
             フロントエンド・EC プラットフォーム開発を専門としています。現在は横浜を拠点に、オープンソースの認可サーバー
-            QAuth を開発しています。日本国内での就労機会にも関心があります — お気軽にご連絡ください。
+            QAuth を開発しています。技術・人文知識・国際業務ビザまたは高度専門職(HSP)ビザのスポンサーとなっていただける
+            企業を探しています — お気軽にご連絡ください。
           </p>
           <p className="mt-3 text-[14px] text-muted-foreground/80 leading-[1.8]">
             Software engineer from Türkiye, specialized in identity infrastructure (OAuth 2.1 / OpenID Connect) and
             React-based web frontends for e-commerce. Currently based in Yokohama, building the open-source
-            authorization server QAuth. Open to opportunities in Japan — feel free to reach out.
+            authorization server QAuth. Looking for an employer to sponsor an Engineer/Specialist in Humanities
+            (技術・人文知識・国際業務) or Highly Skilled Professional (HSP) visa — feel free to reach out.
           </p>
 
           {/* Projects */}
