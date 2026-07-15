@@ -1,4 +1,11 @@
+import { IconBrandGithub, IconBrandLinkedin, IconBrandX } from '@tabler/icons-react'
 import { Link } from '@tanstack/react-router'
+
+const SOCIAL_LINKS = [
+  { label: 'QAuth Labs on GitHub', href: 'https://github.com/qauth-labs', Icon: IconBrandGithub },
+  { label: 'QAuth Labs on LinkedIn', href: 'https://www.linkedin.com/company/qauth-labs/', Icon: IconBrandLinkedin },
+  { label: 'QAuth Labs on X', href: 'https://x.com/QAuthLabs', Icon: IconBrandX },
+] as const
 
 const FOOTER_COLS = [
   {
@@ -37,7 +44,7 @@ function QAuthLogo() {
       className="rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       to="/"
     >
-      <img alt="QAuth Labs" className="h-16 w-auto" height={64} src="/logo.svg" />
+      <img alt="QAuth Labs" className="h-16 w-auto" height={64} src="/logo.svg" width={166} />
     </Link>
   )
 }
@@ -65,6 +72,20 @@ export function Footer() {
             <p className="mt-2 max-w-[300px] text-[12px] text-muted-foreground/70 leading-[1.5]">
               Core Auth API in active development · No public release yet
             </p>
+            <nav aria-label="QAuth Labs social profiles" className="mt-4 flex items-center gap-2">
+              {SOCIAL_LINKS.map(({ label, href, Icon }) => (
+                <a
+                  aria-label={label}
+                  className="inline-flex size-9 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:bg-card hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  href={href}
+                  key={label}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <Icon aria-hidden className="size-4.5" />
+                </a>
+              ))}
+            </nav>
           </div>
 
           {/* Link columns */}
@@ -107,7 +128,7 @@ export function Footer() {
             · Apache 2.0
           </span>
           {/* Single aria-label on the container; emoji are decorative/presentation only */}
-          <p aria-label="Made in Europe, Estonia and Türkiye" className="flex gap-2 text-sm">
+          <p aria-label="Made in Europe, Estonia and Türkiye" className="flex gap-2 text-sm" role="img">
             <span aria-hidden>🇪🇪</span>
             <span aria-hidden>🇪🇺</span>
             <span aria-hidden>🇹🇷</span>
